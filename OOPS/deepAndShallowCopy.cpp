@@ -1,14 +1,21 @@
-#include <bits/stdc++.h>
-using namespace std;
-
-class human{
-    public:
+class student {
     int age;
-    human(int age){
-        cout<<"human called!!!"<<endl;
+    char* name;
+    public:
+    student(int age, char* name){
+        this->age = age;
+        this->name = name;
     }
 };
 
-int main(){
-    return 0;
-}
+// deep copy
+class student {
+    int age;
+    char* name;
+    public:
+    student(int age, char* name){
+        this->age = age;
+        this->name = new char[strlen(name) +1]; 
+        strcopy(this->name, name);
+    }
+};
