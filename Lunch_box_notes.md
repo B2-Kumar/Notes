@@ -24,3 +24,6 @@ what is the use of thunderclient or postman.
 
 
 why do we use mongoose.
+write the schema and how they are interelated.
+
+what is biggest challenge that you have faced while making this project.

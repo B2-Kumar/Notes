@@ -80,7 +80,9 @@ Turn Variable: valid only for two processes.
 
 Paterson Solution:
 
-semaphores:
+semaphores: used to synchronize the processes.
+1. Counting Semaphores.
+2. Binary Semaphores.
 
 
 
