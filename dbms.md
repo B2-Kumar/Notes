@@ -32,7 +32,9 @@ tcl - transaction control language.deal with transaction of database.
 ex - commit, rollback, savepoint.
 
 acid properties in dbms?
-atomicity - all changes in data must be performed successfully or not at all.
+atomicity - all changes in data must be performed successfully or not at all.Atomicity involves the following two operations:
+- Abort: If a transaction aborts then all the changes made are not visible.
+- Commit: If a transaction commits then all the changes made are visible.
 consistent - data must be consistent before and after the transaction.
 isolation - no other process can change the data while trasaction is going on. each transaction is occurring independently of the others.
 durable - data doesn't get lost in case of system failure or restart and is present in the same state as it was before the system failure or restart.
@@ -87,27 +89,62 @@ X -> YZ then X -> Y and X -> Z
 X -> Y and YZ -> W then XZ -> W
 
 
-Normalisation: process of decomposing the relations into relations with fewer attributes.
+> Normalisation: process of decomposing the relations into relations with fewer attributes.
+- Elimination of Data Redundancy: Redundant data occurs when the same piece of information is stored in multiple places in the database. This redundancy wastes storage space and can lead to inconsistencies if the same data is updated in one place but not in others. Normalization helps in breaking down the data into smaller, related tables, each representing a single subject, which reduces redundancy.
 
-Elimination of Data Redundancy: Redundant data occurs when the same piece of information is stored in multiple places in the database. This redundancy wastes storage space and can lead to inconsistencies if the same data is updated in one place but not in others. Normalization helps in breaking down the data into smaller, related tables, each representing a single subject, which reduces redundancy.
+- Data Consistency: When data is stored redundantly, inconsistencies can arise when updates are made in one place but not propagated to all instances of that data. Normalization minimizes these inconsistencies by ensuring that each piece of data is stored in only one place, reducing the chance of conflicts.
 
-Data Consistency: When data is stored redundantly, inconsistencies can arise when updates are made in one place but not propagated to all instances of that data. Normalization minimizes these inconsistencies by ensuring that each piece of data is stored in only one place, reducing the chance of conflicts.
+- Anomaly Prevention: Anomalies are inconsistencies or irregularities that can occur when data is not properly organized. These include insertion, update, and deletion anomalies. Normalization helps prevent anomalies by structuring data in a way that each piece of information is stored in its appropriate place without duplication.
 
-Anomaly Prevention: Anomalies are inconsistencies or irregularities that can occur when data is not properly organized. These include insertion, update, and deletion anomalies. Normalization helps prevent anomalies by structuring data in a way that each piece of information is stored in its appropriate place without duplication.
+- Improved Data Integrity: Data integrity refers to the accuracy and reliability of the data stored in the database. By eliminating redundancy and anomalies, normalization contributes to better data integrity. Ensuring that data accurately represents the real-world entities it represents is essential for making informed business decisions.
 
-Improved Data Integrity: Data integrity refers to the accuracy and reliability of the data stored in the database. By eliminating redundancy and anomalies, normalization contributes to better data integrity. Ensuring that data accurately represents the real-world entities it represents is essential for making informed business decisions.
+- Simplified Updates: In a normalized database, when updates need to be made, they typically affect only one place where the data is stored. This simplifies the update process and reduces the chances of errors that could occur when updating redundant data.
 
-Simplified Updates: In a normalized database, when updates need to be made, they typically affect only one place where the data is stored. This simplifies the update process and reduces the chances of errors that could occur when updating redundant data.
+- Efficient Querying: Normalization can help improve the efficiency of querying and data retrieval. Smaller, well-structured tables are easier for the DBMS to manage and optimize for query execution. This can lead to faster query performance and improved response times.
 
-Efficient Querying: Normalization can help improve the efficiency of querying and data retrieval. Smaller, well-structured tables are easier for the DBMS to manage and optimize for query execution. This can lead to faster query performance and improved response times.
+- Scalability and Flexibility: A normalized database schema provides a solid foundation for scalability. As the database grows and new requirements emerge, it's easier to accommodate changes and additions to the data structure without causing major disruptions.
 
-Scalability and Flexibility: A normalized database schema provides a solid foundation for scalability. As the database grows and new requirements emerge, it's easier to accommodate changes and additions to the data structure without causing major disruptions.
+- Maintainability: A normalized database is generally easier to maintain and modify. Changes to the schema are more straightforward, and developers can work with a clear understanding of the relationships between different data elements.
 
-Maintainability: A normalized database is generally easier to maintain and modify. Changes to the schema are more straightforward, and developers can work with a clear understanding of the relationships between different data elements.
+> Disadvantages of Normalization
+- You cannot start building the database before knowing what the user needs.
+- The performance degrades when normalizing the relations to higher normal forms, i.e., 4NF, 5NF.
+- It is very time-consuming and difficult to normalize relations of a higher degree.
+- Careless decomposition may lead to a bad database design, leading to serious problems.
 
 
-Anomalies : inconsistencies or irregularities that can occur in a database when the data is not properly organized or structured. 
+> Anomalies : inconsistencies or irregularities that can occur in a database when the data is not properly organized or structured. 
 It is of three types:
-Insertion
-Updation
-Deletion
+- Insertion Anomaly: Insertion Anomaly refers to when one cannot insert a new tuple into a relationship due to lack of data.
+- Deletion Anomaly: The delete anomaly refers to the situation where the deletion of data results in the unintended loss of some other important data.
+- Updatation Anomaly: The update anomaly is when an update of a single data value requires multiple rows of data to be updated.
+
+> Normalization works through a series of stages called Normal forms. The normal forms apply to individual relations. The relation is said to be in particular normal form if it satisfies constraints.
+
+> First Normal Form (1NF)
+- A relation will be 1NF if it contains an atomic value.
+- It states that an attribute of a table cannot hold multiple values. It must hold only single-valued attribute.
+- It disallows the multi-valued attribute, composite attribute, and their combinations.
+
+
+
+
+
+
+
+
+
+> Transaction
+- It is a set of logically related operation. It contains a group of tasks.
+- It is an action or series of actions. It is performed by a single user to perform operations for accessing the contents of the database.
+
+*Operations of Transaction:*
+- Read(X): Read operation is used to read the value of X from the database and stores it in a buffer in main memory.
+
+- Write(X): Write operation is used to write the value back to the database from the buffer.
+
+> Commit: It is used to save the work done permanently.
+  Rollback: It is used to undo the work done.
+
+*States in a Transaction*
+Link: https://static.javatpoint.com/dbms/images/dbms-states-of-transaction.png

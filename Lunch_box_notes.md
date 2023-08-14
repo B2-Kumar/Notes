@@ -1,3 +1,13 @@
+Introduce your project.
+why have you done this projects? what are the problems that your project is going to solve?
+Basic Structures and workflow of the projects.
+what are the extra features that make your projects unique?
+what are the tech stacks that you have used in your project?
+why have you used these tech stacks? what are the benefits of using these tech stacks?
+what is biggest challenge that you have faced while making this project?
+what are the extra features and improvements that you would like to add to your project in the future?
+what are the things that you have learnt from this project?
+
 mern
 mongodb, express, node - backend.
 react - frontend.
@@ -26,4 +36,3 @@ what is the use of thunderclient or postman.
 why do we use mongoose.
 write the schema and how they are interelated.
 
-what is biggest challenge that you have faced while making this project.
