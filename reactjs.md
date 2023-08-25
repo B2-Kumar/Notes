@@ -31,4 +31,3 @@ This transformation process is typically done using a tool called a "transpiler.
 React come with Babel configurations preconfigured.
 
 differences between ES6 and ES5?
-

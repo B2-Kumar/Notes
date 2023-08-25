@@ -57,3 +57,7 @@ Easier to work with when dealing with dynamic data or rapid prototyping.
 Disadvantages:
 Type-related errors may only be discovered during runtime, leading to potential runtime failures.
 Can be less efficient due to runtime type checking and conversions.
+
+syntax error - occurs when the code follow the syntax of javascript. As a result, the JavaScript engine is unable to understand and interpret the code, and it throws a syntax error. code will not compile.
+
+logical error - also known as a semantic error, occurs when the code compiles and runs without any syntax errors, but the program does not produce the expected or desired outcome due to flawed logic or incorrect reasoning.

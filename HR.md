@@ -1,10 +1,14 @@
 Introduce Yourself.
+
 Good Morning sir,
 My name is Bittu Kumar. I am a final year B.Tech student pursuing Computer Science and Engineering at NIT Patna. My passion for technology and learning has been a driving force throughout my academic journey. Being a quick learner, I always seek opportunities to learn and explore new technologies.
 
-I am a competitive programmer and like prbolem solving. Data structures and algorithms are my strong suits. some of my achievements are - I have qualified for icpc regionals this year and got all india rank of 43 in ICPC Amritapuri doublesite. I am expert on codeforces and 5 star on codechef. I am also proficient in data structures and algorithms and among top 1 percent coder on leetcode.
-Along with data structures and algorithms, I also have a good hand on web development and explored some tech stacks like reactjs, nodejs and mongoDB.
+One of my main interests lies in competitive programming, where I enjoy solving problems that revolve around data structures and algorithms. A few highlights from my journey include qualifying for the ICPC regionals this year and achieving an All India rank of 43 in ICPC Amritapuri doublesite. I am expert on codeforces, 5 star on codechef and among top 1 percent coder on leetcode with current ratings more than 2100.
 
-Apart from academics, I have a few hobbies as well. I enjoy competitive programming as it challenges my problem-solving skills. In my free time, i enjoy playing cricket and love listening to music to relax and unwind.
+Beyond coding challenges, I've also explored web development. I'm familiar with technologies like ReactJS, Node.js, and MongoDB. I've put these skills to use by creating projects like a food delivery app, portfolio website and a few more projects. 
+
+I've also done some freelancing work as a problem setter at imocha, where I designed and tested problems related to data structures and algorithms.
+
+Talking about my hobbies, I enjoy participating in contest as it enhances my problem-solving skills. In my free time, i enjoy playing cricket and love listening to music to relax and unwind.
 
 I embrace each day as an opportunity for self improvement and strive to evolve into the best version of myself both personally ans professionally.
