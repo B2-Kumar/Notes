@@ -8,6 +8,10 @@ what is biggest challenge that you have faced while making this project?
 what are the extra features and improvements that you would like to add to your project in the future?
 what are the things that you have learnt from this project?
 
+How did you implement user authentication in your app?
+
+Answer: I implemented user authentication using JSON Web Tokens (JWT) and bcrypt for password hashing. When a user registers or logs in, the server generates a JWT token that contains user information. This token is then sent to the client and included in subsequent requests for authentication. Bcrypt was used to securely hash and store user passwords in the database, ensuring sensitive data remains protected.
+
 mern
 mongodb, express, node - backend.
 react - frontend.

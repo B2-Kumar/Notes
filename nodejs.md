@@ -1,8 +1,8 @@
-why do we need backend?
-Backend refers to the server-side of an application. It's the part of a web application that deals with the underlying logic, data storage, and interaction with databases, as well as handling requests from clients (such as web browsers) and sending back responses. Backend serves as the foundation that supports the frontend, which is the user interface that users interact with directly.
+Backend - It refers to the server-side of an application. It's the part of a web application that deals with the underlying logic, data storage, and interaction with databases, as well as handling requests from clients (such as web browsers) and sending back responses. Backend serves as the foundation that supports the frontend, which is the user interface that users interact with directly.Java, PHP, Python, and Node.js are some of the backend development technologies
 
-nodejs - a framework which directly compiles the javascript without the help of browser. it is used to create server-side web applications and api for the frontend.aysnchronous and single threaded.fast, opensource, scalable and asynchronous.
+Frontend - It refers to the client side of an application. It is the part of the applicaton that users can see and interact with and includes everything that attributes to the visual aspects of a web application.html, css, javascript, reactjs etc are some examples of tech stacks which are used in the frontend.
 
+nodejs - a framework which directly compiles the javascript without the help of browser. it is used to create server-side web applications and api for the frontend.aysnchronous and single threaded.fast, opensource, scalable and asynchronous. In short, Node.js is an open-source, cross-platform JavaScript runtime environment and library to run web applications outside the client’s browser. It is used to create server-side web applications.
 Node. js runs JavaScript code in a single thread, which means that your code can only do one task at a time. However, Node. js itself is multithreaded and provides hidden threads through the libuv library, which handles I/O operations like reading files from a disk or network requests.Through the use of hidden threads, Node.js provides asynchronous methods that allow your code to make I/O requests without blocking the main thread.
 Handling more and more concurrent client’s request is very easy.
 Even though our Node JS Application receives more and more Concurrent client requests, there is no need of creating more and more threads, because of Event loop.
@@ -16,6 +16,19 @@ setTimeout(() => {
     document.write("Let us see what happens");
 }, 2000);
 ```
+
+> NPM stands for Node Package Manager, responsible for managing all the packages and modules for Node.js.
+
+why nodejs?
+very fast, a javascript library so easy to understand for a web developers, can handle asynchronous functions efficiently, have vast amount of library and frameworks which makes the development easier. event driven programming approach.
+
+demerits?
+Since Node.js is single-threaded, CPU intensive tasks are not its strong suit.
+Using callback is complex since you end up with several nested callbacks.
+
+event driven programming - This approach uses events to trigger various functions. the events can be anything like pressing a key, clicking a mouse button. a callback function is already registered whenever an event is triggered.
+
+event loop - handle asynchronous callbacks in nodejs.
 
 callback funtions?
 async await?

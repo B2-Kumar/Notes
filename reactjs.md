@@ -16,3 +16,19 @@ A library is a collection of pre-written and pre-compiled code that provides spe
 reactjs, jquery, axios.
 A framework is a set of pre-written code that provides a structure for developing software applications.
 Nextjs, Angular, Vuejs, Django, Ruby
+
+e.preventDefalut - prevents the default funtions. in case of forms it prevents the page from reloading.
+
+features of reactjs-
+JSX : It is a syntax extension of javascript by using which we can write html and javascript code together.
+components - It is the building blocks of any react application as react is single page application so it uses multiple components to render without reloading the page. It breaks the user interface into independent, reusable parts that can be processed separately.
+virtual dom - a lightweight representation of the real DOM in the memory. When the state of an object changes, virtual DOM changes only that object in the real DOM, rather than updating all the objects.
+one way data binding - It means data flows only from parent to its child in hierchical order. Unidirectional data flow keeps everything modular and fast. since the data flows in a single direction, it becomes easier to debug errors and know where the problem occurs in an application at the moment.
+
+Can web browers read jsx directly?
+No, web browsers cannot read JSX directly. JSX (JavaScript XML) is a syntax extension for JavaScript commonly used with React for describing the structure and rendering of UI components. Browsers understand standard JavaScript, but JSX is not valid JavaScript on its own. Therefore, JSX code needs to be transformed into regular JavaScript before it can be understood and executed by web browsers.
+This transformation process is typically done using a tool called a "transpiler." The most common transpiler for JSX is Babel. Babel converts JSX code into equivalent JavaScript code that browsers can understand. This includes transforming JSX elements into regular function calls and object structures.
+React come with Babel configurations preconfigured.
+
+differences between ES6 and ES5?
+

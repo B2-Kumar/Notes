@@ -13,6 +13,9 @@ class person {
     void add(int x, int y, int z = 10){
         cout<<x + y + z<<endl;
     }
+    int sub(int a, int b){
+        return (a - b);
+    }
     void operator+ (person &obj){
         int val1 = this->a;
         int val2 = obj.a;
@@ -33,6 +36,8 @@ int main(){
     obj.say("john");
     obj.add(10, 20);
     obj.add(10, 20, 30);
+    int res = obj.sub(110, 10);
+    cout<<res<<endl;
     male m;
     m.say();
     m.person::say();

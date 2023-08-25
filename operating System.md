@@ -128,7 +128,6 @@ Next Fit Algorithms - the operating system starts searching for an available mem
 Best Fit algorithm - the operating system searches for the smallest available memory block that can accommodate the process and allocates that block to the process. 
 Worst Fit algorithm - the operating system searches for the largest available memory block and allocates that block to the process.
 
-
 Paging: Paging is a memory management scheme in which the main memory (RAM) is divided into fixed-sized blocks called frames, and the processes are divided into fixed-sized blocks called pages. Each page of a process can be mapped to any available frame in the main memory.
 1. Non-contiguous Memory Allocation
 2. Efficient Memory Utilization
