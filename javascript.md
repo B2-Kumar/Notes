@@ -61,3 +61,59 @@ Can be less efficient due to runtime type checking and conversions.
 syntax error - occurs when the code follow the syntax of javascript. As a result, the JavaScript engine is unable to understand and interpret the code, and it throws a syntax error. code will not compile.
 
 logical error - also known as a semantic error, occurs when the code compiles and runs without any syntax errors, but the program does not produce the expected or desired outcome due to flawed logic or incorrect reasoning.
+
+promises
+Promises in JavaScript have four different states. They are as follows:
+Pending : It is an initial state of promise. It is the initial state of promise where it is in the pending state that neither is fulfilled nor rejected. 
+Fulfilled : It is the state where the promise has been fulfilled that assures that the async operation is done.
+Rejected : It is the state where the promise is rejected and the async operation has failed. 
+Settled : It is the state where the promise is rejected or fulfilled.
+
+passed by value and passed by reference
+
+> An Immediately Invoked Function Expression (IIFE) is a JavaScript function that is defined and executed immediately after its creation. particularly useful for encapsulating code, preventing naming conflicts, and controlling variable visibility. also called self invoking function.
+
+use strict?
+
+Higher Order Funtions: these are the functions that take functions(known as callback) as arguments and return them by operating on other functios.
+
+exec() Method : It is used to search for a match in a given string. It returns an array containing information about the first match found or null if no match is found. The returned array contains details about the match, including the matched text, index, and captured groups.
+
+test() Method : It is used to check if a match exists in a given string. It returns a boolean value (true or false) based on whether a match is found or not.
+
+currying : when a function of an argument is transformed into functions of one or more arguments is called Currying.
+
+prototype and object prototype in javascript.
+
+Memoization : To cache the return value of a function concerning its parameters, it is called memoization. It is used to speed up the application especially in case of complex, time consuming functions. 
+
+> Constructor functions are used to create single objects or multiple objects with similar properties and methods.
+
+BOM?
+
+spread operator : spread or unpack elements of an array or object into another array or object.
+
+Rest Parameter : Used to represent multiple function arguments as an array. Only used as a parameter in function definitions.
+
+generator function?
+weak set?
+wead map?
+Prototypal vs Classical Inheritance
+
+> Object destructuring is a method to extract elements from an array or an object.
+> Temporal Dead Zone is a behavior that occurs with variables declared using let and const keywords before they are initialized.
+> Pop-up boxes available in JavaScript are Alert Box, Confirm Box, and Prompt Box.
+
+Event Capturing:
+Event capturing is the first phase of the event propagation process. During event capturing, the event starts from the root of the DOM tree and moves down to the target element. It allows you to capture events at the outermost ancestor before they reach the target element. Event listeners attached during the capturing phase are called before any event listeners attached during the bubbling phase.
+```javascript
+element.addEventListener(eventType, handler, true);
+```
+
+Event Bubbling:
+Event bubbling is the second phase of the event propagation process. After an event reaches the target element, it starts to bubble up through the DOM tree, triggering event listeners on ancestor elements. This means that events on inner elements are handled first, followed by events on outer elements.
+```javascript
+element.addEventListener(eventType, handler);
+```
+
+call and apply?
