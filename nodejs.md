@@ -20,7 +20,7 @@ setTimeout(() => {
 > NPM stands for Node Package Manager, responsible for managing all the packages and modules for Node.js.
 
 why nodejs?
-very fast, a javascript library so easy to understand for a web developers, can handle asynchronous functions efficiently, have vast amount of library and frameworks which makes the development easier. event driven programming approach.
+very fast, a javascript library so easy to understand for a web developers, can handle asynchronous functions efficiently, have vast amount of library and frameworks which makes the development easier. event driven programming approach. Rich ecosystem. javascript everywhere.
 
 demerits?
 Since Node.js is single-threaded, CPU intensive tasks are not its strong suit.
@@ -182,6 +182,7 @@ app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });
 ```
+what is query?
 
 Route Handling Methods:
 Route handling methods in Express.js are used to define how your application should respond to different HTTP methods and specific routes. These methods allow you to set up routes for different URL paths and HTTP verbs (GET, POST, PUT, DELETE, etc.). Each route handling method corresponds to a specific HTTP method and defines what should happen when a request matches that route.
@@ -229,3 +230,31 @@ Simplicity of Representation: JSON-like structures do not require complex encodi
 Rich Data Modeling: JSON-like structures support nested objects and arrays, enabling developers to represent complex relationships and hierarchical data models without requiring multiple tables or collections as in relational databases.
 Schema Validation: While MongoDB supports flexible data models, it also offers optional schema validation to ensure that certain fields or data types conform to a predefined structure, providing a balance between flexibility and data integrity.
 Simpler Migration and Development: The JSON-like nature of MongoDB makes it easier to migrate data from other JSON-based sources and to develop applications that interact with the database, reducing the impedance mismatch between application and data store.
+
+process.nextTick(): Callbacks scheduled with this method are executed immediately after the current operation completes, before any I/O events or timers are triggered. It's placed in front of the event loop queue. This is useful for tasks that need to be performed before I/O events.
+setImmediate(): Callbacks scheduled with this method are executed on the next iteration of the event loop after I/O events, allowing I/O events to be processed between each callback execution.  It's placed at the end of the event loop queue. It's used to ensure that code runs after the I/O events of the current iteration.
+Both methods allow you to control the order of execution within the event loop, but they have different behaviors regarding when they execute relative to I/O events and timers. 
+
+eventEmitter???
+
+package.json - It is a core component of Node.js projects and serves as a configuration and metadata file for your application. It contains various information about your project, its dependencies, scripts, project details and other important settings.
+
+> The URL module in Node.js provides various utilities for URL resolution and parsing. It is a built-in module that helps split up the web address into a readable format. url.resolve(), url.format().
+
+> Streams in Node.js are a fundamental concept used for handling and manipulating data, especially when working with large amounts of data or in situations where data needs to be processed as it's being read or written, rather than loading it all into memory at once.
+
+RELP???
+
+Control flow in Node.js manages function calls by determining the order in which asynchronous operations are executed and how the program flows through different parts of the code.
+It can be done using callbacks, promises and async/await.
+
+Can you access DOM in Node?
+No, you cannot access the DOM in Node.js. The DOM is a browser-specific API that allows for the manipulation of HTML and XML documents. Since Node.js does not run in a browser, it does not have access to the DOM.
+
+fork() and spawn() in node js.
+buffer class in node js.
+piping in node js.
+callback hell?
+NODE_ENV?
+Test Pyramid in node js?
+event emitter in node js?

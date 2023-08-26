@@ -39,4 +39,5 @@ what is the use of thunderclient or postman.
 
 why do we use mongoose.
 write the schema and how they are interelated.
+why monogoDB?
 

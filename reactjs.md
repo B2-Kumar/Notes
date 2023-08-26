@@ -1,6 +1,6 @@
 dom - DOM stands for Document Object Model. It is a programming interface provided by web browsers that represents the structure of an HTML or XML document as a tree-like data structure.When a web page is loaded, the browser parses the HTML or XML code and creates a DOM tree, which is a hierarchical representation of the page's elements.
 
-virtual dom -it doesn't directly update html. Instead of directly manipulating the real dom, it acts lightweight copy of the real dom which keeps the track of all the changes made. it compares with the real dom and it updates the jsx which is changed or updated making it fast.It efficiently determines the minimal number of changes required to update the real DOM to match the new UI representation.
+virtual dom - It doesn't directly update html. Instead of directly manipulating the real dom, it acts lightweight copy of the real dom which keeps the track of all the changes made. it compares with the real dom and it updates the jsx which is changed or updated making it fast.It efficiently determines the minimal number of changes required to update the real DOM to match the new UI representation.
 
 real dom - it is the actual representation of the html document in the browser.updating the whole real dom every time makes the application slow so in react js concept of virtual dom is used.
 
@@ -31,3 +31,51 @@ This transformation process is typically done using a tool called a "transpiler.
 React come with Babel configurations preconfigured.
 
 differences between ES6 and ES5?
+synthetic events in React?
+Life Cycle of React Js?
+
+why do we need of using keys in lists?
+A key is a unique identifier and it is used to identify which items have changed, been updated or deleted from the lists
+It also helps to determine which components need to be re-rendered instead of re-rendering all the components every time. Therefore, it increases performance, as only the updated components are re-rendered
+
+client side rendering vs server side rendering?
+
+React vs Angular
+React - Facebook, Virtual Dom, Uni-directional, server-side.
+Angular - Google, Real Dom, Bi-directional, client-side.
+
+Components in React Js:
+Functional Components: These types of components have no state of their own and only contain render methods, and therefore are also called stateless components. They may derive data from other components as props (properties).
+```jsx
+function Greeting(props) {
+  return <h1>Welcome to {props.name}</h1>;
+}
+```
+Class Components: These types of components can hold and manage their own state and have a separate render method to return JSX on the screen. They are also called Stateful components as they can have a state.
+```jsx
+class Greeting extends React.Component {
+  render() {
+    return <h1>Welcome to {this.props.name}</h1>;
+  }
+}
+```
+
+What are props in React?
+Props are short for Properties. It is a React built-in object that stores the value of attributes of a tag and works similarly to HTML attributes.
+It provide a way to pass data from one component to another component. It is passed to the component in the same way as arguments are passed in a function.
+
+> A higher-order component acts as a container for other components. This helps to keep components simple and enables re-usability. They are generally used when multiple components have to use a common logic
+
+Context API
+why?
+benefits of context api over redux.
+
+Redux : 
+Redux is an open-source, JavaScript library used to manage the application state. React uses Redux to build the user interface. It is a predictable state container for JavaScript applications and is used for the entire application’s state management.
+
+components of Redux : 
+Store: Holds the state of the application.
+Action: The source information for the store.
+Reducer: Specifies how the application's state changes in response to actions sent to the store.
+
+React Router - A routing library which is used to create routers in react application.

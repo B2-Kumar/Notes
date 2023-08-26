@@ -1,8 +1,11 @@
 Javascript: JavaScript is a popular web scripting language and is used for client-side and server-side development. It doesn't need compilation before running the application. Javascript application are meant to run inside the browser.
 
+Javascript vs Typescript
+
 variable name cannot start with numeric value.
 
-callback function?
+callback function.
+callback vs setTimeout vs promises vs async-await.
 
 Cookies - Cookies are small pieces of data that are stored on a user's device when they visit a website. They are used to remember various types of information, such as user preferences, login sessions, and tracking data.
 
