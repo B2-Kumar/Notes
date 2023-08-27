@@ -11,14 +11,14 @@ Cookies - Cookies are small pieces of data that are stored on a user's device wh
 
 let - block scope, var - function scope, const - constant throught the javascript program.
 
-closures in javascript.
+closures in javascript?
 
 What are Imports and Exports in JavaScript?
 Imports and exports help in writing modular code for our JavaScript applications. With the help of imports and exports, we can split a JavaScript code into multiple files in a project. This greatly simplifies the application source code and encourages code readability.
 
 document and window?
 
-localStorage:
+localStorage :
 Data stored in localStorage persists even after the browser is closed and is available for future sessions.
 Data stored in localStorage has no expiration time and remains stored until explicitly removed by the user or the application.
 Data stored in localStorage is shared among all tabs and windows from the same origin (domain).
@@ -86,7 +86,7 @@ test() Method : It is used to check if a match exists in a given string. It retu
 
 currying : when a function of an argument is transformed into functions of one or more arguments is called Currying.
 
-prototype and object prototype in javascript.
+prototype and object prototype in javascript?
 
 Memoization : To cache the return value of a function concerning its parameters, it is called memoization. It is used to speed up the application especially in case of complex, time consuming functions. 
 
@@ -94,7 +94,7 @@ Memoization : To cache the return value of a function concerning its parameters,
 
 BOM?
 
-spread operator : spread or unpack elements of an array or object into another array or object.
+spread operator : Spread or Unpack elements of an array or object into another array or object.
 
 Rest Parameter : Used to represent multiple function arguments as an array. Only used as a parameter in function definitions.
 

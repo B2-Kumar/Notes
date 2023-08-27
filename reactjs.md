@@ -8,7 +8,7 @@ react - open source javascript library used for building user interfaces and sin
 componenet based architectures.
 virtual dom.
 unidirectional dataflow.
-declarative - we tell what we want to be done without taking care of the steps and process. // imperative - opposite of declarative.
+declarative - we tell what we want to be done without taking care of the steps and process. React is primarily a declarative library for building user interfaces. This means that in React, you describe what you want the user interface to look like based on the current state, and React takes care of updating the actual DOM to match that description. Instead of directly manipulating the DOM through imperative commands, you specify the desired UI state, and React handles the updates for you. // imperative - opposite of declarative.
 jsx - javascript and html together.
 
 differences between library and frameworks:
@@ -66,7 +66,43 @@ It provide a way to pass data from one component to another component. It is pas
 
 > A higher-order component acts as a container for other components. This helps to keep components simple and enables re-usability. They are generally used when multiple components have to use a common logic
 
-Context API
+Context API : The Context API is a feature in React that provides a way to share state data and functionality across multiple components in a component tree without having to pass props down manually at every level. It allows you to create a global state and make it accessible to any component in your application, regardless of its position in the component hierarchy. It simplifies prop drilling, which is the process of passing data through multiple levels of components, by offering a centralized mechanism for managing shared state.
+
+How to create context : 
+1. Creating a Context :
+To create a context, use the React.createContext() function. This returns an object containing two components: Provider and Consumer.
+2. Providing the Context :
+Wrap the part of your component tree where you want to share the context with the Provider component. The Provider component accepts a value prop that contains the data or functions you want to share.
+3. Consuming the Context :
+Use the Consumer component, or more commonly, the useContext hook, to access the shared context data within child components. The Consumer or useContext hook allows you to access the data without passing props explicitly.
+```jsx
+import React, { createContext, useContext } from 'react';
+
+// Step 1: Create a Context
+const ThemeContext = createContext();
+
+// Step 2: Provide the Context
+function App() {
+  const theme = 'light'; // Example theme value
+  return (
+    <ThemeContext.Provider value={theme}>
+      <Header />
+      <MainContent />
+    </ThemeContext.Provider>
+  );
+}
+
+// Step 3: Consume the Context
+function Header() {
+  const theme = useContext(ThemeContext);
+  return <header className={`header-${theme}`}>Header</header>;
+}
+
+function MainContent() {
+  const theme = useContext(ThemeContext);
+  return <div className={`content-${theme}`}>Main Content</div>;
+}
+```
 why?
 benefits of context api over redux.
 
@@ -79,3 +115,4 @@ Action: The source information for the store.
 Reducer: Specifies how the application's state changes in response to actions sent to the store.
 
 React Router - A routing library which is used to create routers in react application.
+
