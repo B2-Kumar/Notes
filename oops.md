@@ -17,7 +17,7 @@ Constructors are special class functionsthat perform the initialization of every
 There are three types of constructors in C++: 
 ★ Default constructor 
 ★ Parameterized Constructor - takes the arguments
-★ Copy Constructor - These are a particular type of constructor that takes an object as an argument and copies values of one object’s data members into another object. We pass the class object into another object of the same class in this constructor. As the name suggests, you Copy means to copy the values of one Object into another Object of Class. This is used for Copying the values of a class object into another object of a class, so we call them Copy constructor and for copying the values.
+★ Copy Constructor - These are a particular type of constructor that takes an object as an argument and copies values of one object’s data members into another object. We pass the class object into another object of the same class in this constructor. As the name suggests, you Copy means to copy the values of one Object into another Object of Class. This is used for Copying the values of a class object into another object of a class, so we call them Copy constructor and for copying the values. By default shallow copy(points to same location) is made so we can use copy constructor to create deep copy.
 
 ```
 #include <bits/stdc++.h>
@@ -336,10 +336,12 @@ int main()
     obj.constFunction();   
 }
 ```
-###### Initialisation List
+
+###### Initialisation List 
 It is a special syntax used in constructors to initialize the member variables of a class before the body of the constructor executes. It is an efficient and preferred way to initialize class members, especially for non-default constructors or when dealing with class members that are objects themselves.
 It is placed after the constructor's argument list but before the constructor's body, and it is specified using a colon : followed by a comma-separated list of member variable initializations.
 Methods cannot be intialised here.
+If you are assigning the values inside the body of the constructor, then a temporary object would be created which will be provided to the assignment operator. The temporary object will be destroyed at the end of the assignment statement. Creation of temporary object can be avoided by using initializer list.
 ```
 #include <iostream>
 
@@ -430,8 +432,7 @@ int main(){
 ###### Static Keyword
 It is used to define class-level or object-independent variables and member functions. When static is applied to variables, it means that the variable belongs to the class itself, not to any specific instance (object) of the class. When static is applied to member functions, it means the function can be called directly through the class name, without needing an object of the class.
 
-###### Properties of static:
-
+###### Properties of static :
 Static Variables: A static variable is shared among all instances (objects) of the class. There is only one instance of the static variable for the entire class, regardless of how many objects are created. A static variable is initialized only once at the start of the program and retains its value between function calls.
 
 Static Member Functions: A static member function does not have a this pointer and can be called without creating an instance of the class. It operates on class-level data and cannot access non-static member variables or call non-static member functions.
@@ -519,7 +520,6 @@ int main() {
 }
 ```
 
-
 ###### Encapsulation
 Encapsulation is about wrapping data and methods into a single class and protecting it from outside intervention.
 fully encapsualted : all data members or variables are private.
@@ -567,7 +567,6 @@ public:
 ```
 
 ###### Abstraction - implementation hiding.
-###### Advantages Of Abstraction 
 ● Only you can make changes to your data or function, and no one else can. 
 ● It makes the application secure by not allowing anyone else to see the background details. 
 ● Increases the reusability of the code. 
@@ -621,43 +620,26 @@ Inheritence ambiguity.
 - can be solved using scope resolution operator.
 
 ###### polymorphism 
-Polymorphism is considered one of the important features of Object-Oriented Programming. Polymorphism is a concept that allows you to perform a single action in different ways. Polymorphism is the combination of two Greek words. The poly means many, and morphs means forms. So polymorphism means many forms. 
+Polymorphism is considered one of the important features of Object-Oriented Programming. Polymorphism is a concept that allows you to perform a single action in different ways. Polymorphism means many forms. It is an object-oriented programming concept that refers to the ability of a variable, function, or object to take on multiple forms, which are when the behavior of the same object or function is different in different contexts. 
 1. ###### Compile time polymorphism / Static polymorphism.
-    1. function overloading - When there are multiple functions in a class with the same name but different parameters, these functions are overloaded. The main advantage of function overloading is that it increases the program’s readability. Functions can be overloaded by using different numbers of arguments or by using different types of arguments.
-    2. operator overloading.
+- Compile-time polymorphism, also known as static polymorphism or early binding, is a form of polymorphism in object-oriented programming where the method or function to be executed is determined at compile time by the compliler based on the number and types of arguments passed to it. This type of polymorphism is achieved through function overloading and operator overloading.
+    1. function overloading - When there are multiple functions in a class with the same name but different parameters, these functions are called depending on the number and data types of the parameters.
+    Number of parameters can be different or data types of parameters can be different or both.
+    Return type must be same.
+    2. operator overloading - Operator overloading involves defining how operators behave when used with objects of a class. Operators such as +, -, *, /, etc., can be overloaded to work with objects, allowing custom behavior for object interactions. For example, you could overload operators for complex numbers, matrices, or vectors to enable arithmetic operations like addition, subtraction, multiplication, and division.
+- Compile time polymorphism is efficient because the method resolution is determined at compile time, leading to faster execution. However, it has limitations since the decision of which function to call is based solely on the compile-time information, and it cannot adapt to the actual runtime type of objects.
+
 2. ###### Run time polymorphism / Dynamic polymorphism.
-    1. Method overriding - Method overriding is a feature that allows you to redefine the parent class method in the child class based on its requirement. In other words, whatever methods the parent class has by default are available in the child class. But, sometimes, a child class may not be satisfied with parent class method implementation. The child class is allowed to redefine that method based on its requirement. This process is called method overriding.
+- Runtime polymorphism, also known as dynamic polymorphism or late binding, is a concept in object-oriented programming (OOP) that allows you to invoke a method on an object and have the appropriate implementation of that method determined at runtime based on the actual type of the object. This type of polymorphism is achieved through inheritance, base and derived classes, and virtual functions. Runtime polymorphism is achieved using a combination of function overriding and virtual functions.
+    1. Method overriding - Method overriding is a feature that allows you to redefine the parent class method in the child class based on its requirement. In other words, whatever methods the parent class has by default are available in the child class. But, sometimes, a child class may not be satisfied with parent class method implementation. The child class is allowed to redefine that method based on its requirement. This process is called method overriding. 
     Rules for method overriding:
     ● The parent class method and the method of the child class must have the same name. 
     ● The parent class method and the method of the child class must have the same parameters.
     ● It is possible through inheritance only.
 
-```
-class Parent{ 
-    public: 
-    void show() { 
-        cout<<"Inside parent class"<<endl; 
-    } 
-}; 
-class subclass1: public Parent { 
-    public:
-    void show() { 
-        cout<<"Inside subclass1"<<endl; 
-    } 
-}; 
-class subclass2: public Parent { 
-    public:
-    void show() { cout<<"Inside subclass2"; 
-    } 
-};
-```
-
-###### Differences between compile time and runtime polymorphism.
-
-###### Differences between abstraction and encapsulation.
-
 ###### Virtual Function
 A virtual function is a member function in the base class that we expect to redefine in derived classes. It is declared using the virtual keyword. A virtual function is used in the base class to ensure that the function is overridden. This especially applies to cases where a pointer of base class points to a derived class object.
+A virtual function is a member function declared in the base class with the virtual keyword. Derived classes can override (provide their own implementations for) these virtual functions. When a function is declared as virtual in the base class, the decision about which implementation to call is deferred until runtime.
 C++ determines which function is invoked at the runtime based on the type of object pointed by the base class pointer when the function is made virtual.
 
 ```
@@ -715,11 +697,9 @@ int main() {
     return 0;
 }
 ```
-###### Diamond Problem 
-It is a classic issue that arises in some object-oriented programming languages, including C++, when multiple inheritance is used. It occurs when a class inherits from two or more base classes that have a common ancestor. This results in ambiguity when accessing the members of the common ancestor through the derived class.
 
 ###### What is a pure virtual function? 
-A pure virtual function (or abstract function) in C++ is a virtual function for which we don’t have an implementation. We only declare it. A pure virtual function is declared by assigning 0 in the declaration.
+A pure virtual function in c++ is a virtual function for which we do not have an implementation. We do not write any functionality in it. Instead, we only declare this function. A pure virtual function does not carry any definition related to its base class. A pure virtual function is declared by assigning a zero (0) in its declaration. Any class containing one or more pure virtual functions can not be used to define any object. For this reason, these classes are known as abstract classes. Classes derived from abstract classes need to implement the pure virtual functions of these classes. Belongs to runtime polymorphism. They serve as a blueprint for derived classes to provide their own implementations for the pure virtual functions.
 A pure virtual function (or abstract function) in C++ is a virtual function for which we can implement, But we must override that function in the derived class; otherwise, the derived class will also become an abstract class.
 
 ```
@@ -730,12 +710,20 @@ class A{
 ```
 
 ###### Abstract Class
-Abstract classes can’t be instantiated, i.e., we cannot create an object of this class. However, we can derive a class from it and instantiate the object of the derived class. An Abstract class has at least one pure virtual function. 
+Abstract classes can’t be instantiated, i.e., we cannot create an object of this class. However, we can derive a class from it and instantiate the object of the derived class. An Abstract class has at least one pure virtual function. It serve as a blueprint for derived classes. It defines a common interface, including member functions and attributes, that derived classes are expected to implement. 
 ###### Properties of the abstract classes: 
 ❖ It can have normal functions and variables along with pure virtual functions. 
 ❖ Prominently used for upcasting(converting a derived-class reference or pointer to a base-class. In other words, upcasting allows us to treat a derived type as a base type), so its derived classes can use its interface. 
 ❖ If an abstract class has a derived class, they must implement all pure virtual functions, or they will become abstract.
-
+###### Why abstract classes?
+Defining Common Interface:
+Abstract classes allow you to define a common interface that a group of related classes should adhere to. By specifying a set of methods that must be implemented by derived classes, you establish a contract that promotes consistency and ensures that certain behaviors are present across the class hierarchy.
+Clear Abstraction and Encapsulation:
+Abstract classes promote the principles of abstraction and encapsulation. They allow you to expose a high-level interface (the abstract methods) while hiding the implementation details within derived classes. 
+Promoting Code Reusability:
+Abstract classes allow you to provide default implementations for methods that can be shared among multiple derived classes. This reduces code duplication and promotes the reuse of common behavior. Concrete methods in the abstract class can serve as a foundation that derived classes build upon.
+Facilitating Polymorphism:
+Abstract classes are essential for achieving polymorphism—the ability to treat objects of different classes through a common base class interface. By working with abstract base class pointers or references, you can write more generic code that interacts with various derived classes in a unified manner
 ```
 #include<iostream> 
 using namespace std; 
@@ -796,3 +784,80 @@ int main(){
 ● A friend function is not invoked using the class object as it is not in the class’s scope. 
 ● A friend function cannot access the private and protected data members of the class directly. It needs to make use of a class object and then access the members using the dot operator. 
 ● A friend function can be a global function or a member of another class.
+
+> Key points about friend functions:
+
+Access to Private Members: A friend function can access private and protected members (attributes and methods) of the class it is declared as a friend of. This provides controlled access to class internals without making them public.
+Not a Member Function: A friend function is not a member of the class it is declared in. It is a standalone function that has access to the class's private members.
+Declared Inside the Class: The declaration of a friend function is usually placed inside the class, but it is not a member function. The declaration is followed by the friend keyword.
+Not Inherited: The friend relationship is not inherited. Derived classes of the class declaring a friend function do not automatically have access to that function's access to the class's private members.
+Non-Member Function Syntax: When defining the friend function outside the class, it is defined like a regular function, not like a member function. It doesn't have the class scope resolution operator ::.
+Use with Caution: While friend functions can be useful for specific cases, they should be used judiciously. Excessive use of friend functions can undermine encapsulation and may lead to more complex and less maintainable code.
+
+###### Diamond Problem 
+It is a classic issue that arises in some object-oriented programming languages, including C++, when multiple inheritance is used. It occurs when a class inherits from two or more base classes that have a common ancestor. This results in ambiguity when accessing the members of the common ancestor through the derived class.
+C++ provides a solution to the diamond problem using virtual inheritance. When a base class is virtually inherited, it ensures that only one instance of that base class exists in the hierarchy, even if multiple paths lead to it. This eliminates the ambiguity caused by the diamond problem.
+C++ virtual inheritance ensures that the base class's constructor is called only once, preventing duplicated base class data members.
+```cpp
+class A {
+public:
+    int valueA;
+};
+
+class B : public virtual A {
+public:
+    int valueB;
+};
+
+class C : public virtual A {
+public:
+    int valueC;
+};
+
+class D : public B, public C {
+public:
+    int valueD;
+};
+```
+
+###### Differences between compile time and runtime polymorphism.
+Compile-Time Polymorphism:
+Definition:
+Also known as static polymorphism or early binding.
+Occurs at compile time, before the program runs.
+Mechanism:
+Achieved through function overloading and operator overloading.
+The function or operator to be called is determined based on the function's signature or operator used.
+Binding:
+Function call is resolved at compile time based on the function's name, number, and types of arguments.
+The exact function to be called is known at compile time, and no additional lookup is needed at runtime.
+Examples:
+Function overloading: Multiple functions with the same name but different parameter lists.
+Operator overloading: Defining custom behavior for operators when used with class objects.
+Performance:
+Usually faster since the function call is resolved at compile time.
+No runtime overhead for function lookup.
+
+Runtime Polymorphism:
+Definition:
+Also known as dynamic polymorphism or late binding.
+Occurs at runtime, while the program is executing.
+Mechanism:
+Achieved through inheritance and virtual functions.
+The function to be called is determined at runtime based on the actual object type.
+Binding:
+Function call is resolved at runtime based on the actual type of the object on which the method is invoked.
+The exact function to be called may change depending on the actual object's type.
+Examples:
+Inheritance and overriding: A base class has virtual functions that are overridden by derived classes.
+Interfaces: Defining common methods in an interface and implementing them in various classes.
+Performance:
+Typically slightly slower due to the additional overhead of runtime function lookup (vtable or dispatch table).
+Function resolution involves a lookup in the vtable or similar mechanism to determine the correct function to call.
+
+###### Differences between abstraction and encapsulation.
+- In encapsulation, we focus on grouping the properties and methods of the object together inside a single unit while In abstraction, we focus on hiding the complex methods and only showing the essential things to the user.
+- Encapsulation makes code more modular and easy to understand while Abstraction makes applications easy to use by hiding underlying complex working.
+- Encapsulation provide security to the properties and methods by deciding who can access them while Abstraction provide security to the application by hiding the working part from the user.
+- Encapsulation is about hiding the information while Abstraction is about hiding the implementation. or internal working.
+- Encapsulation is implemented using access modifiers to define the visibility of class members (attributes and methods). Accessor methods (getters) and mutator methods (setters) are used to provide controlled access to attributes while Abstraction is implemented using abstract classes and interfaces. Abstract classes define a common interface and may contain both abstract methods (without implementation) and concrete methods (with implementation). Interfaces define a contract that classes must adhere to by providing implementations for the defined methods.

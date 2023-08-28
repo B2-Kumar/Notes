@@ -2,6 +2,7 @@
 using namespace std; 
 class Base{ 
     public: 
+    int val;
     virtual void s() =0;// Pure Virtual Function 
 }; 
 class Derived: public Base { 
@@ -16,4 +17,6 @@ int main() {
     Derived d_obj; 
     b = &d_obj; 
     b->s(); 
+    b->val = 12;
+    cout<<b->val<<endl;
 }

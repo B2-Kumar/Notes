@@ -1,4 +1,4 @@
-An Operating System can be defined as an interface between user and hardware.The purpose of an operating system is to provide an environment in which a user can execute programs in convenient and efficient manner.
+An Operating System is a software that acts as an interface between user and hardware.The purpose of an operating system is to provide an environment in which a user can execute programs in convenient and efficient manner.
 1. Process Management
 2. Process Synchronization
 3. Memory Management

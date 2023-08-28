@@ -141,6 +141,7 @@ Both ThunderClient and Postman are popular tools used for API testing and develo
 Frontend:
 bootstrap grid system
 container in bootstrap.
+bootstrap carousel
 Modals
 hooks - useState, useEffect, useRef, useNavigate
 filter and map
@@ -158,3 +159,4 @@ cors
 mongoose
 schema
 router using express js
+schema diagram

@@ -1,31 +1,33 @@
 #include <bits/stdc++.h>
-using namespace std;
 
-int main(){
-    int n, m, k;
-    cin>>n>>m>>k;
-    vector<vector<int>> points;
-    for(int i = 0;i < k;i++){
-        int x, y;
-        cin>>x>>y;
-        points.push_back({x, y});
+class MyClass {
+private:
+    int x;
+    double y;
+
+public:
+    // Constructor using initialization list
+    // MyClass(int a, double b) : x(a), y(b) {
+    //     // Constructor body (optional)
+    // }
+
+    void printValues() {
+        std::cout << "x: " << x << ", y: " << y << std::endl;
     }
-    int radius, time;
-    cin>>radius>>time;
-    radius *= time;
-    int cnt = 0;
-    for(int i = 0;i <= n;i++){
-        for(int j = 0;j <= m;j++){
-            bool flag = true;
-            for(auto it: points){
-                int x = it[0], y = it[1];
-                double diff = sqrt((x - i)*(x - i) + (y - j)*(y -j));
-                int res = ceil(diff);
-                if(res <= radius)flag = false;
-            }
-            if(flag)cnt++;
-        }
+
+    int print(int a){
+        std::cout<<a<<std::endl;
+        return a;
     }
-    cout<<cnt<<endl;
+    int print(std::string s){
+        std::cout<<s<<std::endl;
+        return -1;
+    }
+};
+
+int main() {
+    MyClass obj;
+    obj.print("name");
+    obj.print(23);
     return 0;
 }
