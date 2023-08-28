@@ -128,6 +128,9 @@ FROM table_name
 WHERE condition
 LIMIT number1, number2;
 ```
+
+- Aggregate functions are functions that perform calculations on a set of values and return a single value as a result. These functions are commonly used to summarize or manipulate data in various ways, such as computing sums, averages, counts, maximum values, and minimum values within a group of rows.
+
 ###### MIN()|MAX() Syntax
 ```sql
 SELECT MIN|MAX(column_name)
@@ -135,8 +138,8 @@ FROM table_name
 WHERE condition;
 ```
 ###### COUNT() Syntax
-- count(*) gives total no of rows.
-- count(column_name) gives total no of Non-NULL values.
+- count(*) gives total no of rows, includes non-null, null as well as duplicates.
+- count(column_name) gives total no of Non-NULL values includes duplicates.
 - distinct column_name gives all the distinct values in the column even null if present.
 ```sql
 SELECT COUNT(column_name)
@@ -175,6 +178,11 @@ WHERE columnN LIKE pattern;
 - 'a_%' - Finds any values that start with "a" and are at least 2 characters in length
 - 'a__%' - Finds any values that start with "a" and are at least 3 characters in length
 - 'a%o' - Finds any values that start with "a" and ends with "o"
+- %	Represents zero or more characters
+- _	Represents a single character
+- []	Represents any single character within the brackets
+- ^	Represents any character not in the brackets
+- The keyword - Represents any single character within the specified range
 
 ###### IN Syntax
 - allows us to specify multiple values in a WHERE clause.
@@ -225,10 +233,7 @@ It combine rows from two or more tables, based on a related column between them.
 - LEFT (OUTER) JOIN: Returns all records from the left - table, and the matched records from the right table
 - RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
 - FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table
-
-
-
-
+- CROSS JOIN is used to combine all possibilities of the two or more tables and returns the result that contains every row from all contributing tables. The CROSS JOIN is also known as CARTESIAN JOIN, which provides the Cartesian product of all associated tables.
 
 ###### UNION 
 The UNION operator is used to combine the result-set of two or more SELECT statements.
@@ -278,6 +283,33 @@ WHERE EXISTS
 (SELECT column_name FROM table_name WHERE condition);
 ```
 
+##### The ANY operator:
+returns a boolean value as a result
+returns TRUE if ANY of the subquery values meet the condition
+ANY means that the condition will be true if the operation is true for any of the values in the range.
+```sql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ANY
+  (SELECT column_name
+  FROM table_name
+  WHERE condition);
+```
+
+##### The ALL operator:
+returns a boolean value as a result
+returns TRUE if ALL of the subquery values meet the condition
+is used with SELECT, WHERE and HAVING statements
+ALL means that the condition will be true only if the operation is true for all values in the range. 
+```sql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ALL
+  (SELECT column_name
+  FROM table_name
+  WHERE condition);
+```
+
 ###### CASE
 - The CASE expression goes through conditions and returns a value when the first condition is met (like an if-then-else statement). So, once a condition is true, it will stop reading and return the result. If no conditions are true, it returns the value in the ELSE clause.
 
@@ -302,14 +334,14 @@ END AS QuantityText
 FROM OrderDetails;
 ```
 
-> Any, All
-null
-count(*) count the row if all the values in that row is null. check it.
-difference between using and on in joins
+##### NULL:
+NULL is a special marker that indicates the absence of a value or the lack of data in a particular column of a row. It's not the same as an empty string ('') or zero (0). Here are some key points to understand about NULL in MySQL:
 
-
-
-
+Meaning: NULL represents missing or unknown data. It's used to indicate that a value is not available, not applicable, or has not been provided.
+Handling: Arithmetic operations involving NULL usually result in a NULL value. For example, NULL + 5 or NULL * 10 both result in NULL. Comparisons involving NULL generally return NULL as well.
+Aggregates: Most aggregate functions ignore NULL values when performing calculations. For instance, if you use the SUM aggregate function, it won't include NULL values in its calculation.
+Logical Operators: Comparisons with NULL involve special handling. The result of a comparison involving NULL and a value (except for IS NULL and IS NOT NULL checks) is generally NULL. Use the IS NULL and IS NOT NULL conditions to explicitly check for NULL values.
+Operations with NULL: To handle NULL values in expressions, you can use the IS NULL and IS NOT NULL conditions, as well as the COALESCE function or the NULLIF function to handle possible NULL values in expressions.
 
 ###### CREATE DATABASE
 - Used to create new SQL database.
@@ -383,3 +415,168 @@ DROP COLUMN column_name;
 ALTER TABLE table_name
 MODIFY COLUMN column_name datatype;
 ```
+
+##### SQL Constraints:
+SQL constraints are used to specify rules for the data in a table.
+Constraints are used to limit the type of data that can go into a table. This ensures the accuracy and reliability of the data in the table. If there is any violation between the constraint and the data action, the action is aborted.
+Constraints can be column level or table level. Column level constraints apply to a column, and table level constraints apply to the whole table.
+
+The following constraints are commonly used in SQL:
+- NOT NULL - Ensures that a column cannot have a NULL value
+- UNIQUE - Ensures that all values in a column are different
+- PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+- FOREIGN KEY - Prevents actions that would destroy links between tables
+- CHECK - Ensures that the values in a column satisfies a specific condition
+- DEFAULT - Sets a default value for a column if no value is specified
+- CREATE INDEX - Used to create and retrieve data from the database very quickly
+
+##### NOT NULL Constraint:
+By default, a column can hold NULL values.
+The NOT NULL constraint enforces a column to NOT accept NULL values.
+This enforces a field to always contain a value, which means that you cannot insert a new record, or update a record without adding a value to this field.
+Example:
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255) NOT NULL,
+    Age int
+);
+```
+```sql
+ALTER TABLE Persons
+MODIFY COLUMN Age int NOT NULL;
+```
+
+##### UNIQUE Constraint
+The UNIQUE constraint ensures that all values in a column are different.
+Both the UNIQUE and PRIMARY KEY constraints provide a guarantee for uniqueness for a column or set of columns.
+A PRIMARY KEY constraint automatically has a UNIQUE constraint.
+However, you can have many UNIQUE constraints per table, but only one PRIMARY KEY constraint per table.
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL UNIQUE,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+```
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    UNIQUE (ID)
+);
+```
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CONSTRAINT UC_Person UNIQUE (ID,LastName)
+);
+```
+```sql
+ALTER TABLE Persons
+ADD UNIQUE (ID);
+```
+```sql
+ALTER TABLE Persons
+ADD CONSTRAINT UC_Person UNIQUE (ID,LastName);
+```
+
+##### PRIMARY KEY CONSTRAINTS
+PRIMARY KEY constraint uniquely identifies each record in a table.
+Primary keys must contain UNIQUE values, and cannot contain NULL values.
+A table can have only ONE primary key; and in the table, this primary key can consist of single or multiple columns (fields).
+- Syntax is same as that of UNIQUE constraints.
+
+##### FOREIGN KEY Constraint
+The FOREIGN KEY constraint is used to prevent actions that would destroy links between tables.
+A FOREIGN KEY is a field (or collection of fields) in one table, that refers to the PRIMARY KEY in another table.
+The table with the foreign key is called the child table, and the table with the primary key is called the referenced or parent table.
+```sql
+CREATE TABLE Orders (
+    OrderID int NOT NULL,
+    OrderNumber int NOT NULL,
+    PersonID int,
+    PRIMARY KEY (OrderID),
+    FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
+);
+```
+```sql
+CREATE TABLE Orders (
+    OrderID int NOT NULL,
+    OrderNumber int NOT NULL,
+    PersonID int,
+    PRIMARY KEY (OrderID),
+    CONSTRAINT FK_PersonOrder FOREIGN KEY (PersonID)
+    REFERENCES Persons(PersonID)
+);
+```
+
+##### CHECK Constraint
+The CHECK constraint is used to limit the value range that can be placed in a column.
+If you define a CHECK constraint on a column it will allow only certain values for this column.
+If you define a CHECK constraint on a table it can limit the values in certain columns based on values in other columns in the row.
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CHECK (Age>=18)
+);
+```
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int CHECK (Age>=18)
+);
+```
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    City varchar(255),
+    CONSTRAINT CHK_Person CHECK (Age>=18 AND City='Sandnes')
+);
+```
+
+##### DEFAULT Constraint
+The DEFAULT constraint is used to set a default value for a column.
+The default value will be added to all new records, if no other value is specified.
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    City varchar(255) DEFAULT 'Sandnes'
+);
+```
+
+##### DATA TYPES
+- CHAR(size) - A FIXED length string (can contain letters, numbers, and special characters). The size parameter specifies the column length in characters - can be from 0 to 255. Default is 1
+- VARCHAR(size) - A VARIABLE length string (can contain letters, numbers, and special characters). The size parameter specifies the maximum string length in characters - can be from 0 to 65535
+- BINARY(size)- Equal to CHAR(), but stores binary byte strings. The size parameter specifies the column length in bytes. Default is 1
+- VARBINARY(size) - Equal to VARCHAR(), but stores binary byte strings. The size parameter specifies the maximum column length in bytes.
+- BOOL(BOOLEAN) - Zero is considered as false, nonzero values are considered as true.
+- INT(size) - A medium integer. Signed range is from -2147483648 to 2147483647. Unsigned range is from 0 to 4294967295. The size parameter specifies the maximum display width (which is 255). INTEGER(size) is Equal to INT(size)
+- DATE - A date. Format: YYYY-MM-DD. The supported range is from '1000-01-01' to '9999-12-31'
+- DATETIME(fsp) - A date and time combination. Format: YYYY-MM-DD hh:mm:ss. The supported range is from '1000-01-01 00:00:00' to '9999-12-31 23:59:59'. Adding DEFAULT and ON UPDATE in the column definition to get automatic initialization and updating to the current date and time
+- TIMESTAMP(fsp) - A timestamp. TIMESTAMP values are stored as the number of seconds since the Unix epoch ('1970-01-01 00:00:00' UTC). Format: YYYY-MM-DD hh:mm:ss. The supported range is from '1970-01-01 00:00:01' UTC to '2038-01-09 03:14:07' UTC. Automatic initialization and updating to the current date and time can be specified using DEFAULT CURRENT_TIMESTAMP and ON UPDATE CURRENT_TIMESTAMP in the column definition
+- TIME(fsp) - A time. Format: hh:mm:ss. The supported range is from '-838:59:59' to '838:59:59'
+- YEAR - A year in four-digit format. Values allowed in four-digit format: 1901 to 2155, and 0000.
+
+##### MYSQL FUNCTIONS:
+Link : https://www.w3schools.com/sql/sql_ref_mysql.asp
+
+##### IMPORTANT PROBLEMS:
