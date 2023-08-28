@@ -116,3 +116,7 @@ Reducer: Specifies how the application's state changes in response to actions se
 
 React Router - A routing library which is used to create routers in react application.
 
+why className is used in place of class?
+-class attribute in HTML is a reserved keyword in JavaScript. Since JSX is a JavaScript extension and not standard HTML, using class would result in a syntax error in your code. To avoid this conflict, React introduced the className attribute as an alternative to set CSS classes on JSX elements.
+
+why .gitignore file is created?
