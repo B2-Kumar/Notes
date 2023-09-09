@@ -1,11 +1,21 @@
 Network: It refers to a collection of interconnected devices that can communicate and share resources with each other. 
 
+The first network ARPANET is made.
+
 Internet: The internet is a global network of networks. It's a massive interconnected system of various networks worldwide that enables communication and resource sharing on a global scale.
 
+Internet uses a packet switching technique to transmit the data. Thus, the data to be sent is divided into packets and the data is sent in the form of packets only. Each packet of data contains various information like the address of the destination, error control information, etc. Internet majorly uses protocols called Internet Protocol also simply called protocol (IP) and Transmission Control Protocol (TCP) to transmit data from one computer to another.
+
 Protocol: a set of rules and conventions that govern how data is exchanged between devices or systems in a network or communication environment.
-tcp - data is not corrupted and 100% data has reached the destination.
-udp - some data may be lost. video call.
-http - used by web browsers. format of data transfered in the servers contains all the rules.
+
+TCP - data is not corrupted and 100% data has reached the destination.
+
+UDP - some data may be lost. video call.
+
+HTTP - used by web browsers. format of data transfered in the servers contains all the rules.
+
+Also, there are several other protocols that are used by the internet for different purposes. For example, it uses Simple Mail Transfer Protocol (SMTP) to send mail from one client to another, it uses File Transfer Protocol (FTP) to transfer files over the internet, it uses Hypertext Transfer Protocol (HTTP) through which a browser (client) can interact with the internet server.
+
 To know the IP address of the internet provider - $ curl if config.me -s. some of the ports are reserved. 0 - 1023 are reserved.
 
 > IP address is used to identify the device and port is used to identify to identify application.
@@ -13,6 +23,19 @@ To know the IP address of the internet provider - $ curl if config.me -s. some o
 > 1mbps = 1000000 bits/second.
 
 WWW - world wide web (Tim Berners Lee).
+
+What happens when we surf the Internet?
+1. Extracting IP address of a URL (Uniform Resource Locator) In our browser, we enter the URL (Uniform Resource Locator) address of the website we want to visit. Once we enter the URL address of the website, the browser with the help of the DNS (Domain Name System) extracts the IP address corresponding to the URL address that is entered. The DNS (Domain Name System) contains the mapping of the URLs along with their corresponding IP addresses.
+2. Sending request to the server to access the webpage and receiving response Once we get the IP address of the website we want to access using DNS, the browser sends an HTTP (Hypertext Transfer Protocol) request to the server to extract the HTM (Hypertext Markup Language)L webpage corresponding to the IP address. This request is sent over PORT 80 using TCP (Transmission Control Protocol). Once the server receives this HTTP request, it responds back with an HTTP response. This HTTP response consists of the information related to the HTML page corresponding to the IP address of the website.
+3. Receiving HTTP response and displaying the webpage The browser receives the HTML (Hypertext Markup Language) information for the website along with the response and hence, it processes and displays the HTML page on the browser. Finally, the users can see an HTML page for the URL that they entered.
+
+What is Circuit Switching?
+In circuit switching, a dedicated communication channel is set up between the sender and the receiver. Due to the dedicated circuit, there is extremely little chance of data loss or error but a lot of bandwidth is lost because other senders cannot utilize the same channel when a transmission is going on.
+example - Traditional Telephone calls, Emergency services.
+
+What is packet swithching?
+In packet switching, the message is first divided into data packets and then transmitted  individually over the network, and each packet can take a different route to reach its destination. It is connectionless, as it doesn't require a dedicated communication channel. These data packets are then grouped at the receiver's end to obtain the actual data or message.
+example - Internet Browsing, streaming communication, email communication.
 
 NIC (Network Interface Card) : A NIC is a hardware component that allows a computer or other device to physically connect to a network and communicate with other devices over that network.
 
@@ -53,24 +76,52 @@ OSI stands for Open System Interconnection is a reference model that describes h
 OSI consists of seven layers, and each layer performs a particular network function.
 
 Physical, data link, network layer - Responsibilty of the network also called lower layer.
-
 Transport, Session, Presentation, Application - Resposibility of the host also called upper layer.
+Transport Layer is heart of OSI model.
+physical, data link, network layer - Hardware Layers.
+Application, Presentation, Session layer - software layers.
 
-Physical Layer:
+benefits of osi model:
+The change in one layer does not affect the other layers.
+The layered architecture reduces the complexity by dividing the task in a manageable way.
+The layered architecture provides abstraction from other layers.
+Each layer can be changed, tested, and analyzed independently.
+
+Physical Layer: Lowermost Layer of the OSI Model.
 This layer deals with the physical transmission of data over the network medium.
 Functions:
 Defines the hardware characteristics of the network, including cables, connectors, voltage levels, and transmission speeds.
 Converts digital data into signals suitable for transmission.
+It deals with the type of network topology.
+It also deals with the type of transmission - simplex, half-duplex, full-duplex.
 Example: Ethernet cables, fiber optics, wireless radio waves.
+The various protocols used in the physical layer are :
+Digital Subscriber Line.
+Integrated Services Digital Network.
+Ethernet, etc.
+The various devices used in the physical layer are :
+Network adapters,
+Hubs,
+Cables,
+Repeaters,
+Modem, etc.
 
 Data Link Layer:
 This layer focuses on creating a reliable link between two directly connected nodes and managing data frames.
 Functions:
-Framing: Divides data into frames for transmission.
+Framing : It is the technique in which the data is divided into streams of bits (called frames) received from the network layer. Along with the conversion of data into frames, the data link layer adds a header and trailer to the frames. The header (present at the starting of the frame) contains the hardware's physical address of source and destination. The trailer (present at the end of the frame) contains the error detection and correction bits.
 Physical addressing: Adds MAC addresses to frames for addressing.
 Flow control: Ensures data flows at a rate both sender and receiver can handle.
 Error detection and correction: Detects and handles errors in transmitted data.
 Example: Ethernet frames, Wi-Fi frames.
+The various protocols used in this layer are :
+PPP (Point-to-Point Protocol),
+Frame Relay,
+ATM (The asynchronous transfer mode protocol), etc.
+The various devices used in this layer are :
+Bridges,
+Switches,
+NIC cards (Network Interface Cards), etc.
 
 Network Layer:
 This layer is responsible for routing data packets across different networks to reach their destinations.
@@ -79,36 +130,81 @@ Logical addressing: Assigns IP addresses to devices for identification.
 Routing: Determines the best path for data packets to travel between networks.
 Subnetting: Divides networks into smaller segments for efficient routing.
 Example: IP (Internet Protocol), routers.
+The various protocols used in this layer are :
+IPv4 (Internet Protocol version 4),
+IPv6 (Internet Protocol version 6),
+ICMP (Internet Control Message Protocol),
+IPSEC ( IP Security),
+ARP (Address Resolution Protocol),
+MPLS (Multiprotocol Label Switching), etc.
+The various devices used in this layer are :
+Routers,
+Brouters, etc.
 
 Transport Layer:
 This layer ensures end-to-end communication, reliability, and data integrity between devices on different networks.
 Functions:
+One of the major tasks of the transport layer is to add the port addressing (addition of a port number to the header of the data). The port number is added so that the data can be sent at the respective process only.
 Segmentation and reassembly: Divides large messages (with port no and sequenct no) into smaller segments and reassembles them at the destination.
 Flow control: Manages data flow to prevent congestion.
 Error detection and correction: Ensures data integrity.
 Example: TCP (Transmission Control Protocol), UDP (User Datagram Protocol).
+The various protocols used in this layer are :
+TCP (Transmission Control Protocol),
+UDP (User Datagram Protocol), etc.
+The various devices used in this layer are :
+Segments,
+Load Balancers/Firewalls, etc.
 
 Session Layer:
 This layer manages the establishment, maintenance, and termination of communication sessions between two devices.
+The session layer is responsible to create a dialog box which allows two systems to enter into a dialog and transmit the data in either half-duplex or full-duplex mode.
+The session layer is also responsible t adding synchronization bits or checkpoints into the stream of data. These checkpoints help to detect any kind of error that may have occurred during the data transmission. So, if an error has occurred in between the transmission then the re-transmission will take place from the last checkpoint only.
 Functions:
 Session establishment, maintenance, and termination.
 Synchronization of data exchange.
 Example: NetBIOS, RPC (Remote Procedure Call).
+The various protocols used in this layer are :
+PAP (Password Authentication Protocol)
+PPTP (Point-to-Point Tunneling Protocol)
+RPC (Remote Procedure Call Protocol)
+RTCP (Real-time Transport Control Protocol), etc.
+The various devices used in this layer are :
+Gateway, etc.
 
 Presentation Layer:
-This layer deals with data format conversion, encryption, and compression to ensure compatibility between different devices and systems.
+This layer deals with data format conversion, encryption, and compression to ensure compatibility between different devices and systems. Since different computer systems use different encoding systems so the presentation layer must translate the data into a computer-dependent format.
 Functions:
 Data translation: Converts data between different formats.
 Encryption and decryption: Secures data during transmission.
 Data compression: Reduces the size of data for efficient transmission.
 Example: SSL/TLS, JPEG, GIF.
+The various protocols used in this layer are:
+AFP (Apple Filing Protocol),
+ICA (Independent Computing Architecture),
+Citrix system core protocol,
+LPP (Lightweight Presentation Protocol),
+NCP (NetWare Core Protocol),
+NDR (Network Data Representation),
+Tox protocol, etc.
 
 Application Layer:
-This is the top layer that directly interacts with user applications and provides network services.
+This is the top layer that directly interacts with user applications and provides network services. Application layers allow users to access and share files, access and send emails, access webpages (via the world wide web), etc.
 Functions:
 Application protocols: Support specific services for users and applications.
 User interfaces and APIs: Provide interfaces for application communication.
 Example: HTTP, FTP, SMTP, DNS.
+The various protocols used in this layer are:
+DNS (Domain Name System),
+SMTP (Simple Mail Transfer Protocol),
+FTP (File Transfer Protocol),
+POP (Post Office Protocol),
+HTTP (HyperText Transfer Protocol), etc.
+The various devices used in this layer are:
+PC's (Personal Computer),
+Phones,
+Servers,
+Firewalls, etc.
 
 client to server architecture:
 client <==> server
@@ -231,3 +327,5 @@ Middle Boxes:
 firewall: 
 framing:
 Error Detection:
+
+VPN?

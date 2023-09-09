@@ -576,7 +576,34 @@ CREATE TABLE Persons (
 - TIME(fsp) - A time. Format: hh:mm:ss. The supported range is from '-838:59:59' to '838:59:59'
 - YEAR - A year in four-digit format. Values allowed in four-digit format: 1901 to 2155, and 0000.
 
-##### MYSQL FUNCTIONS:
+##### MYSQL FUNCTIONS : 
 Link : https://www.w3schools.com/sql/sql_ref_mysql.asp
 
-##### IMPORTANT PROBLEMS:
+char_length - gives the no of characters in the string. also includes the spaces.
+SELECT CHAR_LENGTH("SQL Tutorial") AS LengthOfString;  // ans = 12.
+SELECT CHAR_LENGTH(replace("SQL Tutorial", ' ', '')) AS LengthOfString;  // ans = 11.
+
+The DATEDIFF() function returns the number of days between two date values.
+datediff(date1, date2)
+
+The IFNULL() function returns a specified value if the expression is NULL.
+If the expression is NOT NULL, this function returns the expression.
+IFNULL(expression, alt_value)
+
+The IF() function returns a value if a condition is TRUE, or another value if a condition is FALSE.
+IF(condition, value_if_true, value_if_false)
+
+##### IMPORTANT PROBLEMS : 
+
+https://leetcode.com/problems/students-and-examinations/?envType=study-plan-v2&envId=top-sql-50
+
+https://leetcode.com/problems/managers-with-at-least-5-direct-reports/?envType=study-plan-v2&envId=top-sql-50
+
+https://leetcode.com/problems/confirmation-rate/?envType=study-plan-v2&envId=top-sql-50
+
+https://leetcode.com/problems/percentage-of-users-attended-a-contest/?envType=study-plan-v2&envId=top-sql-50
+
+https://leetcode.com/problems/queries-quality-and-percentage/?envType=study-plan-v2&envId=top-sql-50
+
+https://leetcode.com/problems/game-play-analysis-iv/?envType=study-plan-v2&envId=top-sql-50
+
