@@ -207,6 +207,7 @@ Global Adoption: IEEE standards are internationally recognized and adopted, maki
 
 Network Layer:
 This layer is responsible for routing data packets across different networks to reach their destinations.
+It divides the data received from the transport layer in the form of packets.
 Functions:
 Logical addressing: Assigns IP addresses to devices for identification.
 Routing: Determines the best path for data packets to travel between networks.
@@ -225,9 +226,13 @@ Brouters, etc.
 
 Transport Layer:
 This layer ensures end-to-end communication, reliability, and data integrity between devices on different networks.
+It is an end to end layer which is used to deliver message to a host.
+It is responsible for the process to process delivery of data. The main aim of the transport layer is to maintain the order so that the data must be received in the same sequence as it was sent by the sender. 
 Functions:
+The transport layer maintains the order of data.
+It receives the data from the upper layer and converts it into smaller parts known as segments.
 One of the major tasks of the transport layer is to add the port addressing (addition of a port number to the header of the data). The port number is added so that the data can be sent at the respective process only.
-Segmentation and reassembly: Divides large messages (with port no and sequenct no) into smaller segments and reassembles them at the destination.
+The transport layer on the receiver's end reassembles the segments to form the actual data.
 Flow control: Manages data flow to prevent congestion.
 Error detection and correction: Ensures data integrity.
 Example: TCP (Transmission Control Protocol), UDP (User Datagram Protocol).
@@ -237,6 +242,124 @@ UDP (User Datagram Protocol), etc.
 The various devices used in this layer are :
 Segments,
 Load Balancers/Firewalls, etc.
+
+what is present in the header?
+
+Functions: 
+1. Process to Process Communication - It uses a port number to deliver the segmented data to the correct process amongst the multiple processes that are running on a particular host
+2. Muliplexing and Demultiplexing
+3. Flow Control
+4. Data integrity
+5. Congestion avoidance
+
+Transmission Control Protocol:
+
+What is a TCP 3-way Handshake?
+The 3-Way handshake is a TCP/IP network connection mechanism that connects the server and client. Before the real data communication process begins, both the client and server must exchange synchronization and acknowledgment packets.
+
+Working of TCP:
+Step 1: Establishing the connection Whenever two computer systems want to exchange data using the transmission control protocol, they first establish a three-way handshake connection. The three-way handshake connection is used to create a connection between the host or client and the server. As the name suggests, it is a three-step process in which first the client (wants to establish a connection) sends an SYN segment (Synchronize Sequence Number segment) which tells the server that the client wants to start the communication. In the second step, the server responds with an SYN-ACK signal (SYN Acknowledgement). The SYN-ACK signifies the server has received the client's request of establishing the connection. In the third and the last step, the client again sends the ACK signal to the server and they both establish a reliable connection that will be used to transfer the data packets.
+The three-way handshake is also known as SYN-SYN-ACK. Refer to the diagram below for more clarity.
+Step 2: Sending of data packets In the second step, the data packets along with the sequence number are sent from the first computer system (client). The second computer (server) responds to these sent packets by sending an acknowledgment or ACK. This acknowledgment bit keeps on increasing with the number of packets sent. This ACK bit helps to keep track of three things:
+the successfully received packets,
+the lost packets, and
+the packets which were accidentally sent twice.
+Step 3: Closing the connection As we have discussed that the client initiates the connection with the server by sending a SYN. But in case of closing the connection, either server or the client can close the connection. The first computer system (either server or the client) initiates the closing of the connection by sending a packet with a FIN bit or finish bit attached to it. The other computer sends back or responds with an ACK bit. Finally, the first computer sends an ACK bit back to the second computer and the connection gets closed.
+
+Features of TCP:
+Connection-oriented 
+Reliable
+Flow Control
+Error Control
+Sequencing of packets
+Congestion Control
+Stream-oriented data transfer 
+Full duplex
+
+TCP: https://scaler.com/topics/images/tcp-segment-format.webp
+Source port address is a 16 bit field that defines port number of application program that is sending the segment.
+Destination port address is a 16 bit field that defines port number of application program that is receiving the segment.
+Sequence number is a field of 32 bit that will define the number assigned to data first byte contained in segment.
+Acknowledgement number is a 32 bit field that describe the next byte that receiver is looking forward to receive next from sender.
+Header Length (HLEN) is a field of 4 bit that specify the number of 4 byte words in TCP header. The header length of TCP header can be between 20 to 60 bytes.
+Reserved is a field 6 bit that are reserved for future use.
+Control bits are 6 different independent control bits or flags in this field.
+There are six in control field:
+URG: Urgent pointer
+ACK: Acknowledgement number
+PSH: Push request
+RST: Reset connection
+SYN: Sequence number Synchronization
+FIN: Connection termination
+Window Size is a 16-bit field that defines the size of the window of sending TCP in bytes.
+Checksum, 16-bit field contains checksum and used for error detection.
+Urgent pointer is a 16 bit field .This flag is set when there is urgent data in the data segment.
+Options and padding can be upto 40 bytes field for optional information in TCP header.
+
+User Datagram Protocol:
+Features of UDP protocol
+Transport layer protocol
+User Datagram Protocol is a transport layer protocol.
+UDP is considered as an unreliable and connection-less protocol
+Connectioness
+UDP protocol is a connectionless protocol, so it does not establish any virtual path before transmitting the data.
+Since it is connectionless, so packets are sent from different paths between sender and receiver.
+Ordered delivery of data is not guaranteed.
+UDP does not guarantee the order of the datagram. A datagram can be received in any order
+The UDP protocol utilizes different port numbers for transmitting data to the correct destination.
+The port numbers are defined between 0 - 1023.
+Faster transmission
+UDP provides us a faster service of data transmission as there is no prior connection establishment before transmitting the data.
+UDP does not require any virtual path for data transmission.
+Acknowledgment mechanism
+There is no acknowledgment mechanism provided by UDP as UDP protocol is a connection-less protocol, so there is no handshaking.
+Segments are handled independently.
+Every segment in UDP takes a different path to reach the destination. So, every UDP packet is handled independent of other UDP packets.
+Stateless
+UDP protocol is a stateless protocol which means that the sender does not wait for an acknowledgment after sending the packet.
+
+UDP: https://scaler.com/topics/images/format-of-user-datagram.webp
+UDP header + UDP data
+User datagram have a fixed size header of 8 bytes which is divided into four parts -
+Source port address: It defines source port number and it is of 16 bits.
+Destination port address: It defines destination port number and it is of 16 bits.
+Total length: This field is used to define the total length of the user datagram which is sum of header and data length in bytes. It is a 16-bit field.
+Checksum: Checksum is also 16 bit field to carry the optional error detection data.
+
+SCTP
+SCTP stands for Stream Control Transmission Protocol.
+SCTP is one of the connection oriented tranport layer protocols.
+It allows transmitting of data between sender and receiver in full duplex mode.
+
+TCP vs UDP : https://www.scaler.com/topics/computer-network/tcp-vs-udp/
+
+The TCP protocol is a connection-oriented protocol, whereas the UDP protocol is a connectionless protocol.
+TCP guarantees that a stream of bytes is sent in a reliable and orderly manner from the user to the server or vice versa. UDP isn't designed for end-to-end communication, and it doesn't confirm the receiver's readiness.
+TCP's speed is slower, whereas UDP's speed is faster.
+TCP performs error checking as well as error recovery, whereas UDP does error checking but discards erroneous packets.
+TCP contains acknowledgment segments, whereas UDP does not have any.
+TCP employs handshake protocols such as SYN, SYN-ACK, and ACK, but UDP employs no handshake protocols.
+Overall, UDP is a much quicker, simpler, and more efficient protocol, nonetheless, only TCP allows for the retransmission of lost data packets.
+When comparing the TCP and UDP protocols, TCP is heavier while UDP is lighter.
+
+TCP congestion : 
+Congestion is an important factor in packet switched network. It refers to the state of a network where the message traffic becomes so heavy that the network response time slows down leading to the failure of the packet. It leads to packet loss. Due to this, it is necessary to control the congestion in the network, however, it cannot be avoided.
+When congestion takes place in the network, TCP handles it by reducing the size of the sender’s window. The window size of the sender is determined by the following two factors:
+Receiver window size - The sender should not send data greater than that of the size of receiver window.
+Congestion window size - To calculate the size of the congestion window, different variants of TCP and methods are used.
+
+Approaches for Congestion Control : 
+Congestion in TCP is handled by using these three phases:
+1. Slow Start
+2. Congestion Avoidance
+3. Congestion Detection
+
+// To study in detail...
+
+How does Flow Control in TCP Work?
+The sender writes the data to a socket and sends it to the transport layer which is TCP in this case. The transport layer will then wrap this data and will send it to the network layer which will route it to the receiving node.
+The TCP stores the data that needs to be sent in the send buffer and the data to be received in the receive buffer. Flow control makes sure that no more packets are sent by the sender once the receiver’s buffer is full as the messages will be dropped and the receiver won’t be able to handle them. In order to control the amount of data sent by the TCP, the receiver will create a buffer which is also known as Receive Window.
+In order to solve deadlock condition problem, whenever the TCP receives the zero window message, it starts a persist timer that will send small packets to the receiver periodically. This is also called WindowProbe.
 
 Session Layer:
 This layer manages the establishment, maintenance, and termination of communication sessions between two devices.
@@ -288,11 +411,93 @@ Phones,
 Servers,
 Firewalls, etc.
 
+Functions of the Application Layer
+The application layer provides the following functions.
+The Application Layer provides protocols that allow the software to communicate and receive data and finally present it to users in a meaningful way.
+This layer allows users to log on as a remote host.
+The Application Layer provides various facilities for users to forward multiple emails and a storage facility.
+This layer acts as a window via which users and application processes can access network resources.
+This layer provides services such as email, file transfer, results distribution, directory services, network resources, etc.
+The application layer communicates with the operating system and guarantees that data is properly saved.
+This layer allows users to interact with other software applications.
+This application layer generally performs host initialization followed by remote login to hosts.
+
+HTTP
+Hypertext transfer protocol enables us to access data via the internet. It sends data in plain text, audio, and video formats. Client and servers exchange resources over the internet using the HTTP protocol. Client devices request servers for the resources required to load a web page, and the servers respond by sending responses to the client.
+
+SMTP
+The SMTP (Simple Mail Transfer Protocol) is the TCP/IP protocol that handles email. The data is sent to another email address using this protocol. SMTP uses a procedure known as "store and forward" to transmit user emails on and across networks. It works with the Mail Transfer Agent to ensure that your message is sent to the correct computer and email mailbox. The port number for SMTP is 25.
+
+DNS
+DNS stand for (Domain Name System). Similar to how a phone's contacts list matches names to numbers, the domain name system is a naming database that locates and translates internet domain names to their unique IP addresses. DNS was created because it is more difficult for humans to recall numerical numbers than alphabetic names. DNS is used in a variety of internet activities to swiftly discover an IP address to connect to and access content.
+
+DHCP
+The Dynamic Host Configuration Protocol is a network management protocol that dynamically allocates a unique IP address to any device or node on a network so that they can communicate using IP. DHCP is used to automate and maintain these setups from a central location. There is no need to manually assign IP addresses to new devices. As a result, connecting to a DHCP-based network requires no user configuration.
+
+FTP
+The FTP (File Transfer Protocol) is a standard internet protocol for transferring data from one computer to another. FTP uses TCP to transmit data because TCP provides reliability and error-free data transmission. It facilitates file sharing via remote computer devices while ensuring dependable and efficient data delivery. For data control, FTP utilizes port 21, and for data access, it uses port 20.
+
+TFTP
+The TFTP (Trivial File Transfer Protocol) is a simple file transfer protocol. The TFTP uses User Datagram Protocol (UDP) to transmit data from one end to the other. While transmitting files, TFTP does not provide any authentication or security. As a result, it's commonly used to transfer boot files or configuration information between workstations in a local setup.
+
+NFS
+It's known as a NFS (network file system). It enables remote computers to mount file systems over a network and interact with them as if they were mounted locally. System administrators can combine resources on the network's centralized servers as a result of this. Port number for the NFS is 2049.
+
+TELNET
+Telnet, short for "Telecommunication Network," is both a protocol and an application that allows users to establish a remote terminal session with another computer or device over a network, typically the internet. Telnet enables users to access the command-line interface (CLI) or shell of a remote system and interact with it as if they were physically present at that system
+
+> A Client is a computer system that accesses the services provided by a server.
+
+> A Server is a powerful centralized hub that stores various information and handles the requests of the client(s).
+
 client to server architecture:
-client <==> server
+In the client-server network, the files are not stored on the hard drive of each computer system. Instead, the files are centrally stored and backed up on a specialized computer known as a server. Here, a server is designed to efficiently provide data to a remote client. On a large-scale network, there can be more than one server.
+social media, streaming services, online shoping.
 
 Peer to peer architecture:
-every device can act as a server as well as client.
+Peer-to-peer has decentralized the simplest form of network architecture where every computer system (node) can communicate with every other computer system (node). There is no use of a centralized server as every computer system can communicate with every other computer system directly.
+Every device can act as a Server as well as Client.
+Some online gaming platforms also use the peer-to-peer network model.
+The peer-to-peer network architecture is also used in the field of blockchain.
+
+Domain Name System (DNS) : 
+It is a naming database that locates and translates internet domain names to their unique IP addresses.
+1. Recursive DNS Service
+In this type, if the DNS resolver only communicates to the root servers and the remaining servers were communicated recursively by the root server. The root server sends the output (IP in this case) to the DNS resolver.
+https://scaler.com/topics/images/recursive-dns-service.webp
+2. Iterative DNS Service
+In this type, the DNS resolver can directly communicate and receive input from the servers at different levels.
+https://scaler.com/topics/images/iterative-dns-service.webp
+
+There are four types of DNS servers.
+DNS Resolver
+Root Name Server
+Top-Level Domain Server
+Authoritative name server
+
+How does DNS work?
+DNS is concerned with translating a domain name into an IP address.
+If you type scaler.com into a web browser, the query is transmitted over the Internet and received by a DNS resolver.
+The DNS resolver then queries a DNS root nameserver.
+After then, the root server responds to the DNS resolver with the address of a TLD DNS server (such as .com or .net), which keeps the information for the resolver's domains. Our request for scaler.com is directed to the .com top-level domain (TLD).
+The DNS resolver then requests the .com TLD after receiving the address of the TLD by the root server.
+The IP address of the domain nameserver, scaler.com, is then returned by the TLD server.
+Finally, the DNS resolver sends a query to the domain's nameserver.
+The nameserver returns the IP address, for scaler.com, to the resolver.
+The DNS resolver then returns the IP address of the domain that was requested originally to the web browser.
+An HTTP request is sent to the IP address by the browser.
+The server returns the webpage to be rendered in the browser at that IP.
+Finally, after all the processes mentioned above, the user can now view the web page on their machine.
+
+Domain Name System Security
+Along with the various features and reliability the DNS provides, it also has some vulnerabilities. Two of the major vulnerabilities are
+1. Cache Poisoning
+DNS cache poisoning is a misleading assault that diverts traffic away from authorized websites and puts users at risk of malware infestations and data theft. An attacker uses a web server and cache to serve a malicious Hypertext Transfer Protocol (HTTP) response to users in web cache poisoning. DNS resolvers cannot validate the data in their caches, which implies that inaccurate data will remain in the cache until the issue is manually fixed or TTL(time to live) expires.
+2. Phishing
+It is done to get users’ data by creating a false website of a well-known website with an utterly unauthorized backend. Phishing causes user privacy and financial status as it is intended to harm the end-user.
+
+World Wide Web : The World Wide Web popularly known as WWW, W3, or the Web is an interconnected system of public webpages accessible through the Internet. The working of the World Wide Web is based on the client-server model. A web server is software and hardware that uses HTTP (Hypertext Transfer Protocol) and other protocols to respond to client requests made over the World Wide Web.
+A web server is used to store data or information and this data is transferred to the computer of the user when a user on the same network requests data or information. The computer system of the user that is requesting this data is known as a client. This exchange of data is usually carried out by the browser present on our computer systems. It allows us to access the retrieved data in the form of documents from the web.
 
 > TCP / IP model.
 Internet Protocol suite.
