@@ -39,13 +39,23 @@ example - Internet Browsing, streaming communication, email communication.
 
 NIC (Network Interface Card) : A NIC is a hardware component that allows a computer or other device to physically connect to a network and communicate with other devices over that network.
 
-Hub: A hub is a basic networking device that operates at the physical layer of the OSI model. It simply receives data packets from one device and broadcasts them to all other devices connected to the hub.
+Hub: A hub is a basic networking device that operates at the physical layer of the OSI model. It simply receives data packets from one device and broadcasts them to all other devices connected to the hub. Flooding is a simple computer network routing technique in which a source or node sends packets through every outgoing link. The flooding algorithm is easy to implement. The hubs use the flooding algorithm to forward data.
 
-Switch: A switch is a more advanced networking device that operates at the data link layer of the OSI model. Unlike hubs, switches are intelligent and can learn the MAC addresses of devices connected to them. They use this information to forward data only to the specific device for which the data is intended. This significantly reduces unnecessary network traffic and improves overall network performance.
+Switch: A switch is a more advanced networking device that operates at the data link layer of the OSI model. Unlike hubs, switches are intelligent and can learn the MAC addresses of devices connected to them. They use this information to forward data only to the specific device for which the data is intended. This significantly reduces unnecessary network traffic and improves overall network performance. When a data frame arrives at any network switch port, it evaluates the destination address(destination MAC address ), performs the necessary checks, and sends the frame to the associated device.
 
-Router: A device that connects different networks and manages the flow of data between them. Determines the best path for data based on IP addresses of source and destination and network protocols.
+Router: A router is a networking device that operates at the network layer (Layer 3) of the OSI (Open Systems Interconnection) model. Its primary function is to route data packets between different networks. Routers make decisions based on IP addresses and are responsible for determining the best path for data to travel from the source to the destination across multiple networks.
 
-modem : convert the digita data into analog data.
+Bridge : A bridge is a device or software component that operates at the data link layer (Layer 2) of the OSI model. Its primary function is to connect and filter traffic between two or more network segments, making them function as a single network.
+
+bridge vs gateway?
+
+modem : A modem is a network device that modulates and demodulates analog carrier signals (known as sine waves) to encode and decode digital data for processing. Because modems perform both of these tasks simultaneously, the term modem is a combination of "modulate" and "demodulate".
+
+Repeater : A repeater is a two-port device that operates at the physical layer . It is used to regenerate the signal over the same network before it becomes too weak or corrupted, allowing the signal to be transmitted for a longer distance over the same network. It is important to understand that repeaters do not amplify the signal. When the signal weakens, repeaters copy it bit by bit and regenerate it at its original strength.
+
+modem vs router?
+Hub vs Switch?
+Bridge vs Repeater?
 
 Types of Network:
 LAN: Local Area Network - offices, buildings.
@@ -67,8 +77,8 @@ Hybrid Topology - The combination of various different topologies.
 
 Transmission modes
 The way in which data is transmitted from one device to another device is known as transmission mode.
-Simplex Mode: the communication is unidirectional, i.e., the data flow in one direction. A device can only send the data but cannot receive it or it can receive the data but cannot send the data. e.g - keyword, monitor
-Half-Duplex Mode: Messages flow in both the directions, but not at the same time. e.g - walkies talkies
+Simplex Mode: the communication is unidirectional, i.e., the data flow in one direction. A device can only send the data but cannot receive it or it can receive the data but cannot send the data. e.g - keyword, monitor, Radio, TV
+Half-Duplex Mode: Messages flow in both the directions, but not at the same time. e.g - walkies talkies, Railway Track
 Full-duplex mode: The communication is bi-directional, i.e., the data flow in both the directions. Both the stations can send and receive the message simultaneously. e.g - Telephone Network.
 
 OSI Model:
@@ -94,6 +104,7 @@ Defines the hardware characteristics of the network, including cables, connector
 Converts digital data into signals suitable for transmission.
 It deals with the type of network topology.
 It also deals with the type of transmission - simplex, half-duplex, full-duplex.
+Bits synchronization :
 Example: Ethernet cables, fiber optics, wireless radio waves.
 The various protocols used in the physical layer are :
 Digital Subscriber Line.
@@ -105,6 +116,18 @@ Hubs,
 Cables,
 Repeaters,
 Modem, etc.
+
+point to point configuration : It provides a dedicated linking or the cabling between two devices. The entire capacity of the link is reserved for the data transmission between those two devices. It is the simplest and the most efficient point of connection topology between the devices.
+
+Network devices are physical devices that enable communication and interaction between hardware on a computer network. e.g - hub, bridge, repeater, modem, router, gateway, etc.
+
+Reasons to Have Both IP and MAC Addresses: 
+Every MAC address assigned to the NIC of a physical device that aids in network device identification is the solution to this question.
+On the internet, a response is sent to our IP address when we ask for a page to load.
+The internet protocol suite has different layers on which MAC and IP addresses work. The layer 2 MAC address identifies the devices connected to the same broadcast network (such as the router). On the other hand, layer 3 uses IP addresses to aid distinguish between devices on various networks. The MAC address is still required to locate the devices on the same network even when we have the IP address to identify the device over other networks.
+IP addresses manage the logical routable connection from computer to computer AND network to network while MAC addresses manage the actual connection between computers.
+
+Bandwidth : Bandwidth in computer networks refers to the maximum data transfer rate or capacity of a network channel or communication link. It represents the amount of data that can be transmitted in a given time frame.
 
 Data Link Layer:
 This layer focuses on creating a reliable link between two directly connected nodes and managing data frames.
@@ -122,6 +145,48 @@ The various devices used in this layer are :
 Bridges,
 Switches,
 NIC cards (Network Interface Cards), etc.
+Ethernet?
+
+What is Flow Control in Data Link Layer ?
+Flow control is a set of procedures that restrict the amount of data a sender should send before it waits for some acknowledgment from the receiver.
+Methods of Flow Control are Stop-and-wait and Sliding window.
+Buffers are blocks in the memory that store data until it is processed. If the buffer is overloaded and there is more incoming data, then the receiver will start losing frames.Thus, flow control is the method of controlling the rate of transmission of data to a value that the receiver can handle.
+
+ACK (Acknowledgment): This bit is set to indicate that the receiver has successfully received the data or frame. It serves as a positive acknowledgment to the sender, indicating that the data was received without errors.
+NACK (Negative Acknowledgment): In some protocols, a NACK bit is used to indicate that the receiver encountered errors or issues while trying to receive the data. A NACK is a negative acknowledgment, indicating that the data transmission was not successful.
+
+Stop-and-wait Protocol
+Stop-and-wait protocol works under the assumption that the communication channel is noiseless and transmissions are error-free.
+Working :
+The sender sends data to the receiver.
+The sender stops and waits for the acknowledgment.
+The receiver receives the data and processes it.
+The receiver sends an acknowledgment for the above data to the sender.
+The sender sends data to the receiver after receiving the acknowledgment of previously sent data.
+The process is unidirectional and continues until the sender sends the End of Transmission (EoT) frame.
+It is secure.
+Problems Occur Due to Lost Data - Infinite waiting time.
+Problems Occur Due to Lost Acknowledgment
+
+Stop-and-Wait ARQ (Automatic Repeat Request)
+Initially, the sender sends one frame as the window size is 1. The receiver on the other end receives the frame and sends the ACK for the correctly received frame. The sender waits for the ACK until the timer expires. If the sender does not receive the ACK within the timer limit, it re-transmits the frame for which the ACK has not been received.
+Problem of Lost Data Packet
+Problem of Lost/ Delayed Acknowledgement - To overcome this type of problem, the sender uses sequence numbering. When the sender sends the data packet, it attaches a certain sequence number which helps the receiver identify the data packet. If the timer goes off before receiving the acknowledgment from the receiver, the sender retransmits the same data packet. But in this case, the receiver already has the data packet, so it discards the data and sends it back an acknowledgment.
+Problem of Damaged Packet
+The window size of the sender and the receiver is only 1. So, only one frame can be sent at a time.
+There is no negative acknowledgment for the lost or damaged frames. So, there is no NACK (negative acknowledgment) in case of stop and wait ARQ.
+
+Error Detection Techniques
+Three methods are used to detect an error in frames: Parity check, Checksum, and Cyclic Redundancy Check (CRC).
+1. Parity Check The parity check is performed by adding an extra bit to the data known as the parity bit, which results in a number of 1s that are either even in the case of even parity or odd in the case of odd parity. The parity check is only useful for detecting single-bit errors.
+The sender counts the amount of 1s in the frame and adds the parity bit in the following manner:
+Even parity: If the number of 1s is even, the parity bit value will be 0. The parity bit value will be 1 if the number of 1s is odd.
+Odd parity: If the number of 1s is odd, the parity bit value will be 0. The parity bit value will be 1 if the number of 1s is even.
+2. Cyclic Redundancy Check(CRC) :  In the sender part, we have appended n bits (all zeroes) to the data part, and then we divide the total data part (data + appended bits) with the divisor (generated from the generator polynomial). Now we get n CRC bits as the remainder. We append the CRC bits to the data part and send it to the receiver.
+On the receiver side, we divide the received data with the same divisor. If the receiver gets the remainder value as 0, then the received data is totally correct, or else the received data has some error.
+3. CheckSum : The sender divides data into blocks of equal size and then adds the data of every block using 1’s complement arithmetic to get the sum. It then complements the sum to get the Checksum and sends it along with the data frames. 
+The receiver receives data + Checksum and passes it to the checksum validator.
+Then do the same process as it is done at the sender's end. If we got a result that contains only 0, then ACCEPT the data, otherwise, REJECT the data.
 
 Network Layer:
 This layer is responsible for routing data packets across different networks to reach their destinations.
@@ -318,6 +383,8 @@ IPV6 - 128 bits.
 classes in IP addresses.
 subnet:
 Resevered address and loopback addresses.
+
+>  In general the first address is the network identification and the last one is the broadcast, they cannot be used as regular addresses.
 
 packets : Header is of 20 bytes.
 
