@@ -200,6 +200,11 @@ On the receiver side, we divide the received data with the same divisor. If the 
 The receiver receives data + Checksum and passes it to the checksum validator.
 Then do the same process as it is done at the sender's end. If we got a result that contains only 0, then ACCEPT the data, otherwise, REJECT the data.
 
+IEEE - It stands for the Institute of Electrical and Electronics Engineers. IEEE is a professional association that develops and publishes technical standards for various fields, including computer networking.
+Compatibility: Standards ensure that devices and technologies developed by various vendors are compatible with each other. This allows organizations to build heterogeneous networks composed of components from different manufacturers.
+Innovation: IEEE standards are regularly updated and improved to accommodate technological advancements and innovations. This encourages the development of new networking technologies and features while maintaining compatibility with existing infrastructure.
+Global Adoption: IEEE standards are internationally recognized and adopted, making them a basis for networking technologies used worldwide. This global acceptance helps in achieving uniformity in network communication.
+
 Network Layer:
 This layer is responsible for routing data packets across different networks to reach their destinations.
 Functions:
