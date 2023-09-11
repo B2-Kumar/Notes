@@ -176,6 +176,18 @@ Problem of Damaged Packet
 The window size of the sender and the receiver is only 1. So, only one frame can be sent at a time.
 There is no negative acknowledgment for the lost or damaged frames. So, there is no NACK (negative acknowledgment) in case of stop and wait ARQ.
 
+Go-Back-N ARQ Protocol
+Go Back N ARQ is a sliding window protocol which is used for flow control purposes. Multiple frames present in a single window are sent together from sender to receiver.
+Pipelining is allowed in the Go Back N ARQ protocol. Pipelining means sending a frame before receiving the acknowledgment for the previously sent frame.
+The size of the sender window in Go Back N ARQ is equal to N.
+The size of the receiver window in Go Back N ARQ is equal to 1.
+When the acknowledgment for one frame is not received by the sender or the frames received by the receiver are out of order, then the whole window starting from the corrupted frame is retransmitted.
+Retransmission of all the frames on detecting a corrupted frame increases channel congestion and also increases the bandwidth requirement.
+
+Selective Repreat ARQ
+In selective repeat ARQ, the sender sets a timer for each frame so whenever the timer is over and the sender has not received any acknowledgment for the frame or receiver sends NACK, then the sender knows that the particular frame is either lost or damaged. So, the sender sends back the lost or damaged frame once the timer is out. The ACK and the NACK have the sequence number of the frame that helps the sender to identify the lost frame.
+As the receiver may receive the frames in a different order, the receiver has the capability of sorting the frames present in the memory buffer using the sequence numbers. On the other hand, the sender must be capable enough to search for the lost frame for which the NACK has been received. So searching at the sender's end and sorting at the receiver's are two minor drawbacks of the selective repeat ARQ.
+
 Error Detection Techniques
 Three methods are used to detect an error in frames: Parity check, Checksum, and Cyclic Redundancy Check (CRC).
 1. Parity Check The parity check is performed by adding an extra bit to the data known as the parity bit, which results in a number of 1s that are either even in the case of even parity or odd in the case of odd parity. The parity check is only useful for detecting single-bit errors.
