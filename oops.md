@@ -1,5 +1,5 @@
 ###### OOPS
-It is basically a programming style that uses the concept of class and object in programming. The popular object-oriented programming languages are c++, java, python, PHP, c#, etc. The main objective of OOPs is to implement real-world entities such as polymorphism, inheritance, encapsulation, abstraction, etc.
+It is basically a programming style that uses the concept of class and object in programming. The popular object-oriented programming languages are C++, java, python, PHP, c#, etc. The main objective of OOPs is to implement real-world entities such as polymorphism, inheritance, encapsulation, abstraction, etc.
 
 ###### Class 
 A user-defined type that describes what a particular kind of object will look like. Thus, a class is a template or blueprint for an object. A class contains variables, methods, and constructors.
@@ -15,6 +15,7 @@ Methods - Functions inside class.
 ###### Constructor 
 Constructors are special class functionsthat perform the initialization of every object. In C++, the constructor is automatically called when an object is created. It is a special method of the class because it does not have any return type. It has the same name as the class itself. Once we create any constructor manually default constructor get destroyed.
 There are three types of constructors in C++: 
+
 ★ Default constructor 
 ★ Parameterized Constructor - takes the arguments
 ★ Copy Constructor - These are a particular type of constructor that takes an object as an argument and copies values of one object’s data members into another object. We pass the class object into another object of the same class in this constructor. As the name suggests, you Copy means to copy the values of one Object into another Object of Class. This is used for Copying the values of a class object into another object of a class, so we call them Copy constructor and for copying the values. By default shallow copy(points to same location) is made so we can use copy constructor to create deep copy.
@@ -129,7 +130,7 @@ delete object_name;
 ```
 
 ###### what is object?
-An object is an instance of a Class. It is an identifiable entity with some characteristics and behavior. Objects are the basic units of object-oriented programming.
+An object is an instance of a Class. It is an identifiable entity with some characteristics and behavior. Data Types are the characteristics while Methods or Funtions are the behaviour of the object. Objects are the basic units of object-oriented programming.
 ```
 // Syntax to create an object in C++:
 class_name objectName;
@@ -181,8 +182,8 @@ int main(){
 ❖ Proper documentation is required for later use.
 
 ###### Diffenences between class and object.
-class is a blueprint of object and used to create object while object is an instance of the class.
-no memory is allocated when a class is created but memory is created when object is created.
+Class is a blueprint of object and used to create object while Object is an instance of the class.
+No memory is allocated when a class is created but memory is allocated when object is created.
 
 ###### Difference between class and structures. 
 By default all the members in class are private while it is public in case of stuctures.
@@ -200,7 +201,8 @@ Size of long : 8
 Size of float : 4
 Size of double : 8
 
-each data type start its memory allocation from its multiple.
+Each data type start its memory allocation from its multiple.
+Total size is a multiple of largest data type.
 ```
 #include <bits/stdc++.h>
 using namespace std;
@@ -220,7 +222,6 @@ int main(){
 }
 ```
 it is done to save cpu cycle.
-
 If want to save memory use #pragma pack(1) above class.
 
 ###### Access Modifiers 
@@ -522,7 +523,7 @@ int main() {
 
 ###### Encapsulation
 Encapsulation is about wrapping data and methods into a single class and protecting it from outside intervention.
-fully encapsualted : all data members or variables are private.
+Fully Encapsualted : All the data members or variables are private.
 
 ```
 class Student
@@ -627,6 +628,21 @@ Polymorphism is considered one of the important features of Object-Oriented Prog
     Number of parameters can be different or data types of parameters can be different or both.
     Return type must be same.
     2. operator overloading - Operator overloading involves defining how operators behave when used with objects of a class. Operators such as +, -, *, /, etc., can be overloaded to work with objects, allowing custom behavior for object interactions. For example, you could overload operators for complex numbers, matrices, or vectors to enable arithmetic operations like addition, subtraction, multiplication, and division.
+
+    ```cpp
+    class Vector {
+    public:
+    int x, y;
+    Vector operator+(const Vector& other) const {
+        return {x + other.x, y + other.y};
+    }
+    };
+
+    Vector v1 = {1, 2};
+    Vector v2 = {3, 4};
+    Vector result = v1 + v2; // Now, + operator adds two vectors element-wise.
+    ```
+
 - Compile time polymorphism is efficient because the method resolution is determined at compile time, leading to faster execution. However, it has limitations since the decision of which function to call is based solely on the compile-time information, and it cannot adapt to the actual runtime type of objects.
 
 2. ###### Run time polymorphism / Dynamic polymorphism.
@@ -748,6 +764,10 @@ int main() {
 If we do not override the pure virtual function in the derived class, then the derived class also becomes an abstract class. We cannot create objects of an abstract class. 
 However, we can derive classes from them and use their data members and member functions (except pure virtual functions).
 
+###### Interface
+While C++ doesn't have a direct "interface" keyword like some other languages, you can achieve interface-like behavior using abstract classes with pure virtual functions. This allows you to define a contract that derived classes must adhere to while providing flexibility and extensibility in your code.
+If all the functions in the class are virtual function then it is called interface.
+
 ###### Friend Funtion
 If a function is defined as a friend function in C++, then the protected and private data of a class can be accessed using the function. A class’s friend function is defined outside that class’s scope, but it has the right to access all private and protected members of the class. Even though the prototypes for friend functions appear in the class definition, friends are not member functions. A friend function in C++ is a function that is preceded by the keyword “friend.”
 
@@ -791,7 +811,7 @@ Access to Private Members: A friend function can access private and protected me
 Not a Member Function: A friend function is not a member of the class it is declared in. It is a standalone function that has access to the class's private members.
 Declared Inside the Class: The declaration of a friend function is usually placed inside the class, but it is not a member function. The declaration is followed by the friend keyword.
 Not Inherited: The friend relationship is not inherited. Derived classes of the class declaring a friend function do not automatically have access to that function's access to the class's private members.
-Non-Member Function Syntax: When defining the friend function outside the class, it is defined like a regular function, not like a member function. It doesn't have the class scope resolution operator ::.
+Non-Member Function Syntax: When defining the friend function outside the class, it is defined like a regular function, not like a member function. It doesn't have the class scope resolution operator ::
 Use with Caution: While friend functions can be useful for specific cases, they should be used judiciously. Excessive use of friend functions can undermine encapsulation and may lead to more complex and less maintainable code.
 
 ###### Diamond Problem 
