@@ -593,6 +593,133 @@ IFNULL(expression, alt_value)
 The IF() function returns a value if a condition is TRUE, or another value if a condition is FALSE.
 IF(condition, value_if_true, value_if_false)
 
+###### WINDOW FUNCTIONS : 
+https://www.scaler.com/topics/window-functions-in-mysql/
+
+```sql
+Window_Function()
+    OVER(   [<PARTITION BY ClAUSE>]
+            [<ORDER BY Clause>]
+            [<ROW or RANGE Clause>]
+        )
+```
+
+Partition Clause
+This clause is used to divide or breaks the rows into partitions, and the partition boundary separates these partitions. The window function operates on each partition, and when it crosses the partition boundary, it will be initialized again.
+
+```sql
+PARTITION BY column_name1, column_name2
+```
+
+ORDER BY Clause
+This clause is used to specify the order of the rows within a partition.
+```sql
+ORDER BY column_name1, column_name2
+```
+
+Frame Definition 
+Sets the frame size.
+```sql
+RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+```
+
+ROW_NUMBER() Function
+ROW_NUMBER is one of the most common ranking window functions in MySQL which provides a normal serial number to each row present within a partition. It is just a normal serial-wise numbering of rows in ascending order. Even the rows which have the same value when using the ORDER BY clause has been given a different row number.
+```sql
+SELECT
+row_number() OVER([<PARTITION BY ClAUSE>]
+                  [<ORDER BY Clause>]
+                  [<ROW or RANGE Clause>])
+                  as alias_name
+FROM table_name;
+```
+
+RANK()
+RANK() is a kind of ranking window function in MySQL which is used to assign ranks to the rows within an ordered partition. The rows which contain the same values will be assigned the same rank, with the next ranking or rankings skipped. For example, if we have 4 items with the same value starting with ranking 1 then all 4 items will have rank 1, and the ranking from the 5th item would be 5 with 2,3,4 skipped.
+```sql
+SELECT 
+RANK() OVER ([<PARTITION BY ClAUSE>]
+             [<ORDER BY Clause>]
+             [<ROW or RANGE Clause>])
+             as alias_name
+FROM table_name;
+```
+
+DENSE_RANK()
+The DENSE_RANK() function is a type of ranking window function in MySQL which is used to assign rankings to the rows within an ordered partition. DENSE_RANK() is almost as same as the RANK() window function but in DENSE_RANK() no rankings are skipped even if the rows have the same value.
+```sql
+SELECT 
+DENSE_RANK() OVER ([<PARTITION BY ClAUSE>]
+             [<ORDER BY Clause>]
+             [<ROW or RANGE Clause>])
+             as alias_name
+FROM table_name;
+```
+
+LAG() and LEAD() Functions
+LAG() and LEAD() both are types of analytical window functions in MySQL. As the name suggests, the LAG() function starts the value from the previous row (returns NULL if starting from the first row as no preceding row exists). It returns the value of the row before the current row of the partition. Whereas the LEAD() function returns the value of the row after the current row in a partition. It starts from the value of the next row (returns NULL if no row if no more rows are available).
+
+```sql
+SELECT
+LAG() OVER([<PARTITION BY ClAUSE>]
+           [<ORDER BY Clause>]
+           [<ROW or RANGE Clause>])
+FROM table_name;
+```
+
+```sql
+SELECT
+LEAD() OVER([<PARTITION BY ClAUSE>]
+            [<ORDER BY Clause>]
+            [<ROW or RANGE Clause>])
+FROM table_name;
+```
+
+FIRST_VALUE() and LAST_VALUE() Functions
+FIRST_VALUE() and LAST_VALUE() are one of the most commonly used analytics window functions in MySQL. The FIRST_VALUE() function shows the value from the first row of a window frame or within a partition. LAST_VALUE() will return the value of the last row of a window frame or within a partition.
+
+```sql
+SELECT
+FIRST_VALUE() OVER([<PARTITION BY ClAUSE>]
+                   [<ORDER BY Clause>]
+                   [<ROW or RANGE Clause>])
+FROM table_name;
+
+```
+
+```sql
+SELECT
+LAST_VALUE() OVER([<PARTITION BY ClAUSE>]
+                  [<ORDER BY Clause>]
+                  [<ROW or RANGE Clause>])
+FROM table_name;
+```
+
+NTILE() Function
+NTILE() function is a kind of analytical window function in MySQL which is used to divide rows into groups within an ordered partition. Each of the divided groups will be assigned a number which will be the same for that group of rows. Every group is represented by a number.
+
+```sql
+SELECT 
+NTILE(number_of_groups) OVER([<PARTITION BY ClAUSE>]
+                             [<ORDER BY Clause>]
+                             [<ROW or RANGE Clause>])
+                             as alias_name
+FROM table_name;
+```
+
+Nth_Value 
+Nth_Value Function is a window function that is used to retrieve the value of the Nth row from a window frame. If there is no Nth row then the function returns NULL.
+
+```sql
+NTH_VALUE(expression, N)
+From First
+Over (
+    partition_clause
+    order_clause
+    frame_clause
+)
+```
+
 ##### IMPORTANT PROBLEMS : 
 
 https://leetcode.com/problems/students-and-examinations/?envType=study-plan-v2&envId=top-sql-50
