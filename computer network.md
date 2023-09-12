@@ -206,9 +206,9 @@ Innovation: IEEE standards are regularly updated and improved to accommodate tec
 Global Adoption: IEEE standards are internationally recognized and adopted, making them a basis for networking technologies used worldwide. This global acceptance helps in achieving uniformity in network communication.
 
 Network Layer:
-This layer is responsible for routing data packets across different networks to reach their destinations.
-It divides the data received from the transport layer in the form of packets.
-Functions:
+There are two primary purposes of the network layer.
+The first one is to divide segments into network packets and then reassemble them on the receiving end.
+Another is to route packets across a physical network by determining the optimum path.
 Logical addressing: Assigns IP addresses to devices for identification.
 Routing: Determines the best path for data packets to travel between networks.
 Subnetting: Divides networks into smaller segments for efficient routing.
@@ -223,6 +223,95 @@ MPLS (Multiprotocol Label Switching), etc.
 The various devices used in this layer are :
 Routers,
 Brouters, etc.
+
+Functions of Network Layer
+The network provides the following functionalities.
+Host-to-Host data delivery
+Network layer is responsible for delivering data packets from source to destination. This layer provides the service that ensures the packet will reach its intended destination.
+Logical Addressing
+The network layer defines an addressing scheme to uniquely identify each device on the network. The network layer places the IP addresses of the sender and receiver in the header. Such an address distinguishes each device uniquely and universally. The header contains the network ID and the host ID of the network, which describes which device of the given network is the receiver.
+Routing and Forwarding
+Routing decides which route from source to destination is most appropriate. It chooses the shortest root between sender and receiver to forward data packets. Some widely used routing protocols are distance vector routing, link-state routing, and path vector.
+Fragmentation
+The network layer fragments the extensive data in fragments to forward from source to destination. It is done because each receiving node has some fixed capacity to accept data.
+Congestion Control
+When the data packets are flooded into the network in tremendous amounts, and the router is unable to route them properly, it causes aggregation of data packets into the network, which is referred to as congestion. The network layer is also responsible for controlling the congestion in the network and manipulating the flow of the network.
+In-Order packets:- This service guarantees that the packets arrive at their destination in the same sequence as they were sent.
+
+The various network layer protocols are
+
+ARP
+Address resolution protocol converts a logical address(IP address) to a physical address(MAC address). If a host on its network wants to know the physical address of another host on the network, it sends an ARP query packet with the IP address and MAC address of the source host and IP address of the destination host and broadcasts it over the network. The ARP packet is received and processed by every host on the network, but only the intended recipient recognizes its own IP address in the request address and responds with the physical address.
+
+ICMP
+It relays messages from the receiver to the sender about the data that was supposed to arrive. ICMP protocol notifies the sender if the data is not received by the receiver or received in the wrong order. Thus, ICMP is a protocol for communicating information about data, but it does not manage the data itself.
+ICMP stands for Internet Control Message Protocol. It is a network diagnostic and error reporting protocol. ICMP is a protocol that is part of the IP protocol suite that employs IP as a carrier protocol because the ICMP packet is enclosed in an IP packet after it is constructed.
+Any network feedback is returned to the original host. If an error occurs on the network, it is reported using ICMP. There are dozens of diagnostic and error-reporting messages in the ICMP protocol. An IP datagram comprises the source and destination addresses, but it does not know the address of the last router it travelled through. As a result, ICMP can only deliver messages to the source, not to the routers in the immediate vicinity.
+https://www.scaler.com/topics/computer-network/internet-control-message-protocol-icmp/
+
+IPv4
+https://www.scaler.com/topics/computer-network/ipv4-address/
+Internet Protocol Version 4 is a network layer protocol that addresses and controls information and is used to transport packets in a network. To transport data packets across a network, IP and TCP work together. Each host is given a 32-bit IP address consisting of the network and host ID. The host number identifies a host on the network, assigned by a network administrator, whereas the network number identifies a network and is assigned by the internet. The IP is only responsible for delivering the packets, and TCP(a transport layer protocol) helps put them back in the correct order.
+Types of IPv4 - classful and classless.
+
+IPv6
+https://www.scaler.com/topics/computer-network/ipv6-address/
+Internet Protocol Version 6 is the latest version of the Internet Protocol. It is a network layer protocol containing addressing and control information for packet routing. IPv6 was established to address the exhaustion of IPv4. To accommodate more levels of addressing, it raises the IP address size from 32 bits to 128 bits.
+
+IPv4 vs IPv6
+https://www.scaler.com/topics/computer-network/ipv4-vs-ipv6/
+
+IGMP
+It stands for Internet group message protocol. IGMP is a multicasting communication protocol that uses resources efficiently to broadcast message/data packets. Hosts and nearby routers use it for multicasting communication with IP networks. IGMP can be utilized in streaming media, games, or web conferencing tools since multicast communication can have multiple senders and receivers.
+
+Introduction to Port
+https://scaler.com/topics/images/different-port-numbers.webp
+The Internet Assigned Numbers Authority (IANA) is an organization that maintains the list of all port numbers.
+In a computer network, a Port is a logical address which is assigned to each application on the computer that utilizes the internet for communication.
+Port is an address of a 16-bit unsigned integer number which ranges from 0 to 65535.
+The primary application of a port number is to transmit the data between a Computer Network and an Application.
+Port is just a unique number assigned to every application of a computer.
+However, the operating system can automatically assign a port number to the application running on the computer.
+Port allows the computer to differentiate between all coming traffic such as email going to different ports and web pages going to different ports.
+After seeing what is the port number now let us see different ranges of port numbers.
+The ports 0 to 1023 are called well-known ports or system ports, these ports are especially associated with particular services.
+The ports from 1024 to 49151 are called registered ports and this range port can be registered with the Internet Assigned Numbers Authority for a specific use.
+The ports from 49152 to 65535 are unassigned ports, called dynamic or ephemeral ports and can be utilized for any type of service.
+
+Subnetting : 
+https://www.scaler.com/topics/computer-network/subnetting/
+
+Public and Private IP Address : 
+https://www.scaler.com/topics/computer-network/public-and-private-ip-address/
+
+Network Address Translation (NAT) : 
+https://www.scaler.com/topics/computer-network/nat/
+
+Quality Of Services : 
+https://www.scaler.com/topics/computer-network/qos/
+
+> Routing can be static or dynamic or default.
+
+Routing Protocol : 
+The Routing protocol is used to determine the path between one or more networks and store the information in the routing table.
+The routing protocol is a process where the router connects with other routers in order to share information about the most cost-effective path and status of the network. The routing process selects the best path on the basis of the reachability information and stores it in a router table.
+
+Routing Tables :
+https://www.scaler.com/topics/computer-network/routing-table/
+
+Intradomain and Interdomain Routing
+https://scaler.com/topics/images/reference-link.webp
+
+Intradomain Routing
+Intradomain Routing is the routing protocol that operates only within a domain. In other words, intradomain routing protocols are used to route packets within a specific domain, such as within an institutional network for e-mail or web browsing. Unlike interdomain routing protocols, it doesn't communicate with other domains.
+1. Distance Vector Routing : https://www.scaler.com/topics/computer-network/distance-vector-routing-algorithm/
+2. Link State Routing : https://www.scaler.com/topics/computer-network/link-state-routing-algorithm/
+
+Interdomain Routing
+Interdomain Routing is the protocol in which the routing algorithm works both within and between domains. Domains must be connected in some way, for hosts inside one domain to exchange data with hosts in other domains. This connection within domains is governed by the interdomain routing protocols. This is often done using the Border Gateway Protocol (BGP). It is used in Path Vector Routing using which interdomain routing is performed. In path vector routing, the routing depends on the analysis of the path from the nodes in the current domain to the node in the other domain, and not on the distance between nodes.
+1. Path Vector Routing : https://www.scaler.com/topics/computer-network/intradomain-and-interdomain-routing/
+
+SDN?
 
 Transport Layer:
 This layer ensures end-to-end communication, reliability, and data integrity between devices on different networks.
@@ -424,9 +513,11 @@ This application layer generally performs host initialization followed by remote
 
 HTTP
 Hypertext transfer protocol enables us to access data via the internet. It sends data in plain text, audio, and video formats. Client and servers exchange resources over the internet using the HTTP protocol. Client devices request servers for the resources required to load a web page, and the servers respond by sending responses to the client.
+https://www.scaler.com/topics/computer-network/hypertext-transfer-protocol/
 
 SMTP
 The SMTP (Simple Mail Transfer Protocol) is the TCP/IP protocol that handles email. The data is sent to another email address using this protocol. SMTP uses a procedure known as "store and forward" to transmit user emails on and across networks. It works with the Mail Transfer Agent to ensure that your message is sent to the correct computer and email mailbox. The port number for SMTP is 25.
+https://www.scaler.com/topics/computer-network/smtp-protocol/
 
 DNS
 DNS stand for (Domain Name System). Similar to how a phone's contacts list matches names to numbers, the domain name system is a naming database that locates and translates internet domain names to their unique IP addresses. DNS was created because it is more difficult for humans to recall numerical numbers than alphabetic names. DNS is used in a variety of internet activities to swiftly discover an IP address to connect to and access content.
@@ -436,6 +527,7 @@ The Dynamic Host Configuration Protocol is a network management protocol that dy
 
 FTP
 The FTP (File Transfer Protocol) is a standard internet protocol for transferring data from one computer to another. FTP uses TCP to transmit data because TCP provides reliability and error-free data transmission. It facilitates file sharing via remote computer devices while ensuring dependable and efficient data delivery. For data control, FTP utilizes port 21, and for data access, it uses port 20.
+https://www.scaler.com/topics/computer-network/file-transfer-protocol/
 
 TFTP
 The TFTP (Trivial File Transfer Protocol) is a simple file transfer protocol. The TFTP uses User Datagram Protocol (UDP) to transmit data from one end to the other. While transmitting files, TFTP does not provide any authentication or security. As a result, it's commonly used to transfer boot files or configuration information between workstations in a local setup.
