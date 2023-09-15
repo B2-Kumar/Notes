@@ -3,24 +3,25 @@ It is basically a programming style that uses the concept of class and object in
 
 ###### Class 
 A user-defined type that describes what a particular kind of object will look like. Thus, a class is a template or blueprint for an object. A class contains variables, methods, and constructors.
-```
+
+```cpp
 class class_name{
-    // properties 
-    // methods
+    // variables or properties or characteristics
+    // methods or behaviour
 };
 ```
 
 Methods - Functions inside class.
 
 ###### Constructor 
-Constructors are special class functionsthat perform the initialization of every object. In C++, the constructor is automatically called when an object is created. It is a special method of the class because it does not have any return type. It has the same name as the class itself. Once we create any constructor manually default constructor get destroyed.
+Constructors are special class functions that perform the initialization of every object. In C++, the constructor is automatically called when an object is created. It is a special method of the class because it does not have any return type. It has the same name as the class itself. Once we create any constructor manually default constructor get destroyed.
 There are three types of constructors in C++: 
 
 ★ Default constructor 
 ★ Parameterized Constructor - takes the arguments
-★ Copy Constructor - These are a particular type of constructor that takes an object as an argument and copies values of one object’s data members into another object. We pass the class object into another object of the same class in this constructor. As the name suggests, you Copy means to copy the values of one Object into another Object of Class. This is used for Copying the values of a class object into another object of a class, so we call them Copy constructor and for copying the values. By default shallow copy(points to same location) is made so we can use copy constructor to create deep copy.
+★ Copy Constructor - These are a particular type of constructor that takes an object as an argument and copies values of one object’s data members into another object. We pass the class object into another object of the same class in this constructor. This is used for Copying the values of a class object into another object of a class. By default shallow copy(points to same location) is made so we can use copy constructor to create deep copy. By default, C++ provides a shallow copy constructor, which means it performs a member-wise copy of the data members. If your class contains pointers or dynamic memory allocation, you may need to define a custom copy constructor to ensure a deep copy is performed. It can be used to perform a shallow or deep copy of an object, depending on the specific requirements of the class.
 
-```
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -77,15 +78,15 @@ int main()
 2. Prevent Inheritance - By declaring the constructor as private, you prevent the creation of derived classes since derived classes need access to the base class constructor.
 3. Non-instantiable classes - There are cases where you might create a class that should not be instantiated at all, serving only as a container for static members or constants. By using a private constructor, you ensure that the class cannot be instantiated accidentally.
 
-constructor overloading - having more than one constructor with different parameters so that every constructor can perform a different task.
+Constructor Overloading - having more than one constructor with different parameters so that every constructor can perform a different task.
 
 ###### Destructor
 A destructor is a special member function that works just opposite to a constructor; unlike constructors that are used for initializing an object, destructors destroy (or delete) the object. The purpose of the destructor is to free the resources that the object may have acquired during its lifetime.
 start with tilde(~) sign.
-no parameters allowed
-no return type
+No parameters allowed.
+No return type allowed.
 
-```
+```cpp
 #include <iostream>
 
 class MyClass {
@@ -128,6 +129,10 @@ when object is created dynamically then the we need to maually destroy the objec
 ```
 delete object_name;
 ```
+
+free is a function in C that is used to deallocate memory that was previously allocated using malloc, calloc, or realloc.
+
+delete is an operator in C++ used to deallocate memory that was previously allocated using the new operator for objects (e.g., classes) and new[] operator for arrays.
 
 ###### what is object?
 An object is an instance of a Class. It is an identifiable entity with some characteristics and behavior. Data Types are the characteristics while Methods or Funtions are the behaviour of the object. Objects are the basic units of object-oriented programming.
@@ -591,10 +596,20 @@ class abstraction{
 
 ###### Inheritence
 Inheritance is one of the key features of Object-oriented programming in C++. It allows us to create a new class (derived class) from an existing class (base class). The derived class inherits the features from the base class and can have additional features of its own. Inheritance allows us to define a class in terms of another class, which makes it easier to create and maintain an application. This also provides an opportunity to reuse the code functionality and fast implementation time.
+
+> The way constructor is called is opposite the way destructor is called in inheritence.
+
+```cpp
+    parent constructor called
+    child constructor called
+    child destructor called
+    parent destructor called
+```
+
 parent class / base class / super class
 child class / sub class
 
-```
+```cpp
 class parent_class{ 
     //Body of parent class 
 }; 
