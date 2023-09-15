@@ -126,7 +126,8 @@ A destructor function is called automatically when:
 ➔ a delete operator is called
 
 when object is created dynamically then the we need to maually destroy the object.
-```
+
+```cpp
 delete object_name;
 ```
 
@@ -136,7 +137,8 @@ delete is an operator in C++ used to deallocate memory that was previously alloc
 
 ###### what is object?
 An object is an instance of a Class. It is an identifiable entity with some characteristics and behavior. Data Types are the characteristics while Methods or Funtions are the behaviour of the object. Objects are the basic units of object-oriented programming.
-```
+
+```cpp
 // Syntax to create an object in C++:
 class_name objectName;
 or
@@ -145,7 +147,7 @@ class_name objectName = class_name();
 class_name* objectName = new class_name();
 ```
 
-```
+```cpp
 class A{
     public:
     int a;
@@ -175,9 +177,9 @@ int main(){
 ❖ To provide the feature of data hiding that is good for security concerns. 
 ❖ We can solve real-world problems if we are using object-oriented programming. 
 ❖ It ensures code reusability. 
-❖ It lets us write generic code: which will work with a range of data, so we don't have to write basic stuff over and over again.
+❖ It lets us write generic code which will work with a range of data, so we don't have to write basic stuff over and over again.
 ❖ Problems can be divided into subparts. 
-❖ It increases thereadability, understandability, andmaintainability of the code.
+❖ It increases the readability, understandability, and maintainability of the code.
 ❖ Data and code are bound together by encapsulation.
 
 ###### disadvantages of opps:
@@ -189,15 +191,16 @@ int main(){
 ###### Diffenences between class and object.
 Class is a blueprint of object and used to create object while Object is an instance of the class.
 No memory is allocated when a class is created but memory is allocated when object is created.
+> If a class is created which does't have any variable, still if we create the object of that class, then the object is assigned size of 1 byte for its identification purposes.
 
 ###### Difference between class and structures. 
 By default all the members in class are private while it is public in case of stuctures.
 
 ###### padding
-processor doesnot read 1 byte at a time from memory it reads 1 word at a time. 
+Processor doesnot read 1 byte at a time from memory it reads 1 word at a time. 
 1 word = 4 bytes in 32-bit architechture.
 1 word = 8 bytes in 64-bit architechture.
-in one cycle one word is read by the processor from the memory.
+In one cycle one word is read by the processor from the memory.
 
 Size of char : 1
 Size of short int : 2
@@ -208,7 +211,8 @@ Size of double : 8
 
 Each data type start its memory allocation from its multiple.
 Total size is a multiple of largest data type.
-```
+
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -226,17 +230,17 @@ int main(){
     return 0;
 }
 ```
-it is done to save cpu cycle.
-If want to save memory use #pragma pack(1) above class.
+It is done to save cpu cycle.
+If want to save memory use #pragma pack(1) above class as it removes padding.
 
 ###### Access Modifiers 
-It is used to assign access to the class members. It sets some restrictions on the class members from accessing the outside functions directly.
+Access Modifiers are keywords that specify the visibility and accessibility of class members (i.e., data members and member functions) from outside the class. 
 Public: All the class members and methods can be accessed everywhere (inside and outside the class).
 Private: All the class members and methods can be acceessed only inside the same class.
 By default all the members and methods are private.
 Protected: All the class members and methods can be acceessed in the same class and derived/child class.
 
-```
+```cpp
 class person {
     // nothing written so private
         int a;
@@ -250,13 +254,13 @@ class person {
 ```
 
 ###### this
-this pointer holds the address of the current object. In simple words, you can say that this pointer points to the current object of the class. It allows the member function to access the data members and member functions of the object it is associated with.
+It is a pointer that holds the address of the current object. In simple words, it points to the current object of the class. It allows the member function to access the data members and member functions of the object it is associated with.
 There can be three main usages of this keyword in C++. 
 ● It can be used to refer to a current class instance variable. 
 ● It can be used to pass the current object as a parameter to another method. 
 ● It can be used to declare indexers.
 
-```
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -279,7 +283,8 @@ int main(){
 
 ###### Shallow Copy
 An object is created by simply copying the data of all variables of the original object. Here, the pointer will be copied but not the memory it points to. It means that the original object and the created copy will now point to the same memory address, which is generally not preferred. Since both objects will reference the exact memory location, then change made by one will reflect those change in another object as well. This can lead to unpleasant side effects if the elements of values are changed via some other reference.  Since we wanted to create an object replica, the Shallow copy will not fulfill this purpose. Note: C++ compiler implicitly creates a copy constructor and assignment operator to perform shallow copy at compile time. A shallow copy can be made by simply copying the reference.
-```
+
+```cpp
 class student {
     int age;
     char* name;
@@ -293,7 +298,8 @@ class student {
 
 ###### Deep Copy
 An object is created by copying all the fields, and it also allocates similar memory resources with the same value to the object. To perform Deep copy, we need to explicitly define the copy constructor and assign dynamic memory as well if required. Also, it is necessary to allocate memory to the other constructors’ variables dynamically. A deep copy means creating a new array and copying over the values. Changes to the array values referred to will not result in changes to the array data refers to.
-```
+
+```cpp
 class student {
     int age;
     char* name;
@@ -309,7 +315,7 @@ class student {
 ###### Const Keyword
 This is used to indicate that a variable, function parameter, or member function does not modify the object's state or that the variable itself is immutable.
 
-```
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -348,7 +354,8 @@ It is a special syntax used in constructors to initialize the member variables o
 It is placed after the constructor's argument list but before the constructor's body, and it is specified using a colon : followed by a comma-separated list of member variable initializations.
 Methods cannot be intialised here.
 If you are assigning the values inside the body of the constructor, then a temporary object would be created which will be provided to the assignment operator. The temporary object will be destroyed at the end of the assignment statement. Creation of temporary object can be avoided by using initializer list.
-```
+
+```cpp
 #include <iostream>
 
 class MyClass {
@@ -377,7 +384,8 @@ int main() {
 
 ###### Scope resolution operator :: 
 It is used to access elements (such as variables, functions, or types) that are defined in a specific scope. It allows you to explicitly specify which scope or namespace a particular identifier belongs to, resolving any potential naming conflicts and providing access to elements defined in different scopes.
-```
+
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -439,11 +447,11 @@ int main(){
 It is used to define class-level or object-independent variables and member functions. When static is applied to variables, it means that the variable belongs to the class itself, not to any specific instance (object) of the class. When static is applied to member functions, it means the function can be called directly through the class name, without needing an object of the class.
 
 ###### Properties of static :
-Static Variables: A static variable is shared among all instances (objects) of the class. There is only one instance of the static variable for the entire class, regardless of how many objects are created. A static variable is initialized only once at the start of the program and retains its value between function calls.
+Static Variables:  Static variables are shared among all instances of a class, and non-static member functions have access to both static and non-static data members of the class. There is only one instance of the static variable for the entire class, regardless of how many objects are created. A static variable is initialized only once at the start of the program and retains its value between function calls.
 
 Static Member Functions: A static member function does not have a this pointer and can be called without creating an instance of the class. It operates on class-level data and cannot access non-static member variables or call non-static member functions.
 
-```
+```cpp
 #include <iostream>
 
 class MyClass {
@@ -480,7 +488,7 @@ int main() {
 ###### Singleton class 
 Singleton class is created only once, and the same instance is used throughout the program's execution. This follows the Singleton pattern, which ensures that there is only one instance of the class, making it useful for scenarios where you need a global point of access to a shared resource or functionality.
 
-```
+```cpp
 #include <iostream>
 
 class Singleton {
@@ -528,9 +536,10 @@ int main() {
 
 ###### Encapsulation
 Encapsulation is about wrapping data and methods into a single class and protecting it from outside intervention.
+It is used to control the visibility of class members, providing public methods to interact with private data, and creating a well-defined interface for external code. This helps in achieving data hiding, code modularity, and abstraction, which are important principles of OOP.
 Fully Encapsualted : All the data members or variables are private.
 
-```
+```cpp
 class Student
 {
     // private data members
@@ -572,13 +581,14 @@ public:
 };
 ```
 
-###### Abstraction - implementation hiding.
+###### Abstraction
+● It hides the implementation details.
 ● Only you can make changes to your data or function, and no one else can. 
 ● It makes the application secure by not allowing anyone else to see the background details. 
 ● Increases the reusability of the code. 
 ● Avoids duplication of your code.
 
-```
+```cpp
 class abstraction{ 
     private: 
     int a, b; 
@@ -595,7 +605,7 @@ class abstraction{
 ```
 
 ###### Inheritence
-Inheritance is one of the key features of Object-oriented programming in C++. It allows us to create a new class (derived class) from an existing class (base class). The derived class inherits the features from the base class and can have additional features of its own. Inheritance allows us to define a class in terms of another class, which makes it easier to create and maintain an application. This also provides an opportunity to reuse the code functionality and fast implementation time.
+Inheritance is one of the key features of Object-oriented programming in C++. It allows us to create a new class (derived class) from an existing class (base class). The derived class inherits the features from the base class and can have additional features of its own. Inheritance allows us to define a class in terms of another class, which makes it easier to create and maintain an application. This also provides an opportunity to reuse the code functionality and fast implementation time. It can also override the properties of the parent class.
 
 > The way constructor is called is opposite the way destructor is called in inheritence.
 
@@ -617,6 +627,10 @@ class parent_class{
 class child_class: access_modifier parent_class { 
     //Body of child class 
 };
+
+class grand_child_class: access_modifier parent_class, access_modifier child_class { 
+    //Body of child class 
+};
 ```
 
         parent\child      public      protected   private
@@ -626,23 +640,25 @@ class child_class: access_modifier parent_class {
         private         NA          NA          NA
 
 ###### Types of Inheritence
-1. single inheritence - In single inheritance, one class can extend the functionality of another class. There is only one parent class and one child class in single inheritances.
+1. single inheritence - In single inheritance, one class can extend the functionality of another class. There is only one parent class and one child class in single inheritance.
 2. multilevel inheritence - When a class inherits from a derived class, and the derived class becomes the base class of the new class, it is called multilevel inheritance. In multilevel inheritance, there is more than one level.
-3. multiple inheritence - inherit from two or more super class. have more than one parent. In multiple inheritance, a class can inherit more than one class. This means that a single child class can have multiple parent classes in this type of inheritance.
+3. multiple inheritence - In multiple inheritance, a class can inherit more than one class. This means that a single child class can have multiple parent classes in this type of inheritance.
 4. hierarchical inheritence - parent have more than one child. In hierarchical inheritance, one class is a base class for more than one derived class.
-5. Hybrid inheritence - combination of two or more inheritence. Hybrid inheritance is a combination of more than one type of inheritance. For example, A child and parent class relationship that follows multiple and hierarchical inheritances can be called hybrid inheritance.
+5. Hybrid inheritence - It is the combination of more than one type of inheritance. For example, A child and parent class relationship that follows multiple and hierarchical inheritances can be called hybrid inheritance.
 
 Inheritence ambiguity.
 - can be solved using scope resolution operator.
 
 ###### polymorphism 
 Polymorphism is considered one of the important features of Object-Oriented Programming. Polymorphism is a concept that allows you to perform a single action in different ways. Polymorphism means many forms. It is an object-oriented programming concept that refers to the ability of a variable, function, or object to take on multiple forms, which are when the behavior of the same object or function is different in different contexts. 
+
 1. ###### Compile time polymorphism / Static polymorphism.
+
 - Compile-time polymorphism, also known as static polymorphism or early binding, is a form of polymorphism in object-oriented programming where the method or function to be executed is determined at compile time by the compliler based on the number and types of arguments passed to it. This type of polymorphism is achieved through function overloading and operator overloading.
     1. function overloading - When there are multiple functions in a class with the same name but different parameters, these functions are called depending on the number and data types of the parameters.
     Number of parameters can be different or data types of parameters can be different or both.
     Return type must be same.
-    2. operator overloading - Operator overloading involves defining how operators behave when used with objects of a class. Operators such as +, -, *, /, etc., can be overloaded to work with objects, allowing custom behavior for object interactions. For example, you could overload operators for complex numbers, matrices, or vectors to enable arithmetic operations like addition, subtraction, multiplication, and division.
+    2. operator overloading - Operator overloading involves defining how operators behave when used with objects of a class. Operators such as +, -, *, /, etc., can be overloaded to work with objects, allowing custom behavior for object interactions. For example, we can overload operators for complex numbers, matrices, or vectors to enable arithmetic operations like addition, subtraction, multiplication, and division.
 
     ```cpp
     class Vector {
@@ -673,7 +689,7 @@ A virtual function is a member function in the base class that we expect to rede
 A virtual function is a member function declared in the base class with the virtual keyword. Derived classes can override (provide their own implementations for) these virtual functions. When a function is declared as virtual in the base class, the decision about which implementation to call is deferred until runtime.
 C++ determines which function is invoked at the runtime based on the type of object pointed by the base class pointer when the function is made virtual.
 
-```
+```cpp
 #include <iostream>
 
 class Shape {
@@ -733,7 +749,7 @@ int main() {
 A pure virtual function in c++ is a virtual function for which we do not have an implementation. We do not write any functionality in it. Instead, we only declare this function. A pure virtual function does not carry any definition related to its base class. A pure virtual function is declared by assigning a zero (0) in its declaration. Any class containing one or more pure virtual functions can not be used to define any object. For this reason, these classes are known as abstract classes. Classes derived from abstract classes need to implement the pure virtual functions of these classes. Belongs to runtime polymorphism. They serve as a blueprint for derived classes to provide their own implementations for the pure virtual functions.
 A pure virtual function (or abstract function) in C++ is a virtual function for which we can implement, But we must override that function in the derived class; otherwise, the derived class will also become an abstract class.
 
-```
+```cpp
 class A{ 
     public:
     virtual void s() = 0; // Pure Virtual Function 
@@ -742,10 +758,12 @@ class A{
 
 ###### Abstract Class
 Abstract classes can’t be instantiated, i.e., we cannot create an object of this class. However, we can derive a class from it and instantiate the object of the derived class. An Abstract class has at least one pure virtual function. It serve as a blueprint for derived classes. It defines a common interface, including member functions and attributes, that derived classes are expected to implement. 
+
 ###### Properties of the abstract classes: 
 ❖ It can have normal functions and variables along with pure virtual functions. 
 ❖ Prominently used for upcasting(converting a derived-class reference or pointer to a base-class. In other words, upcasting allows us to treat a derived type as a base type), so its derived classes can use its interface. 
 ❖ If an abstract class has a derived class, they must implement all pure virtual functions, or they will become abstract.
+
 ###### Why abstract classes?
 Defining Common Interface:
 Abstract classes allow you to define a common interface that a group of related classes should adhere to. By specifying a set of methods that must be implemented by derived classes, you establish a contract that promotes consistency and ensures that certain behaviors are present across the class hierarchy.
@@ -755,7 +773,8 @@ Promoting Code Reusability:
 Abstract classes allow you to provide default implementations for methods that can be shared among multiple derived classes. This reduces code duplication and promotes the reuse of common behavior. Concrete methods in the abstract class can serve as a foundation that derived classes build upon.
 Facilitating Polymorphism:
 Abstract classes are essential for achieving polymorphism—the ability to treat objects of different classes through a common base class interface. By working with abstract base class pointers or references, you can write more generic code that interacts with various derived classes in a unified manner
-```
+
+```cpp
 #include<iostream> 
 using namespace std; 
 class Base{ 
@@ -786,7 +805,7 @@ If all the functions in the class are virtual function then it is called interfa
 ###### Friend Funtion
 If a function is defined as a friend function in C++, then the protected and private data of a class can be accessed using the function. A class’s friend function is defined outside that class’s scope, but it has the right to access all private and protected members of the class. Even though the prototypes for friend functions appear in the class definition, friends are not member functions. A friend function in C++ is a function that is preceded by the keyword “friend.”
 
-```
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -833,6 +852,7 @@ Use with Caution: While friend functions can be useful for specific cases, they 
 It is a classic issue that arises in some object-oriented programming languages, including C++, when multiple inheritance is used. It occurs when a class inherits from two or more base classes that have a common ancestor. This results in ambiguity when accessing the members of the common ancestor through the derived class.
 C++ provides a solution to the diamond problem using virtual inheritance. When a base class is virtually inherited, it ensures that only one instance of that base class exists in the hierarchy, even if multiple paths lead to it. This eliminates the ambiguity caused by the diamond problem.
 C++ virtual inheritance ensures that the base class's constructor is called only once, preventing duplicated base class data members.
+
 ```cpp
 class A {
 public:
