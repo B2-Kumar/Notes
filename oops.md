@@ -589,19 +589,28 @@ public:
 ● Avoids duplication of your code.
 
 ```cpp
-class abstraction{ 
-    private: 
-    int a, b; 
-    public: 
-    // method to set values of private members 
-    void set(int x,int y) { 
-        a = x; 
-        b = y; 
-    }
-    void display() { 
-        cout<<"a = "<< a <<endl; cout<<"b = "<< b <<endl;
-    } 
+#include <iostream>
+using namespace std;
+
+class Summation {
+private:
+	// private variables
+	int a, b, c;
+public:
+	void sum(int x, int y)
+	{
+		a = x;
+		b = y;
+		c = a + b;
+		cout<<"Sum of the two number is : "<<c<<endl;
+	}
 };
+int main()
+{
+	Summation s;
+	s.sum(5, 4);
+	return 0;
+}
 ```
 
 ###### Inheritence
@@ -646,8 +655,7 @@ class grand_child_class: access_modifier parent_class, access_modifier child_cla
 4. hierarchical inheritence - parent have more than one child. In hierarchical inheritance, one class is a base class for more than one derived class.
 5. Hybrid inheritence - It is the combination of more than one type of inheritance. For example, A child and parent class relationship that follows multiple and hierarchical inheritances can be called hybrid inheritance.
 
-Inheritence ambiguity.
-- can be solved using scope resolution operator.
+> Inheritence ambiguity can be solved using scope resolution operator.
 
 ###### polymorphism 
 Polymorphism is considered one of the important features of Object-Oriented Programming. Polymorphism is a concept that allows you to perform a single action in different ways. Polymorphism means many forms. It is an object-oriented programming concept that refers to the ability of a variable, function, or object to take on multiple forms, which are when the behavior of the same object or function is different in different contexts. 
@@ -747,7 +755,7 @@ int main() {
 
 ###### What is a pure virtual function? 
 A pure virtual function in c++ is a virtual function for which we do not have an implementation. We do not write any functionality in it. Instead, we only declare this function. A pure virtual function does not carry any definition related to its base class. A pure virtual function is declared by assigning a zero (0) in its declaration. Any class containing one or more pure virtual functions can not be used to define any object. For this reason, these classes are known as abstract classes. Classes derived from abstract classes need to implement the pure virtual functions of these classes. Belongs to runtime polymorphism. They serve as a blueprint for derived classes to provide their own implementations for the pure virtual functions.
-A pure virtual function (or abstract function) in C++ is a virtual function for which we can implement, But we must override that function in the derived class; otherwise, the derived class will also become an abstract class.
+A pure virtual function (or abstract function) in C++ is a virtual function for which we can implement, But we must override that function in the derived class otherwise, the derived class will also become an abstract class.
 
 ```cpp
 class A{ 
@@ -795,11 +803,12 @@ int main() {
     b->s(); 
 }
 ```
+
 If we do not override the pure virtual function in the derived class, then the derived class also becomes an abstract class. We cannot create objects of an abstract class. 
 However, we can derive classes from them and use their data members and member functions (except pure virtual functions).
 
 ###### Interface
-While C++ doesn't have a direct "interface" keyword like some other languages, you can achieve interface-like behavior using abstract classes with pure virtual functions. This allows you to define a contract that derived classes must adhere to while providing flexibility and extensibility in your code.
+While C++ doesn't have a direct "interface" keyword like some other languages, we can achieve interface-like behavior using abstract classes with pure virtual functions. This allows us to define a contract that derived classes must adhere to while providing flexibility and extensibility in your code.
 If all the functions in the class are virtual function then it is called interface.
 
 ###### Friend Funtion
@@ -914,5 +923,5 @@ Function resolution involves a lookup in the vtable or similar mechanism to dete
 - In encapsulation, we focus on grouping the properties and methods of the object together inside a single unit while In abstraction, we focus on hiding the complex methods and only showing the essential things to the user.
 - Encapsulation makes code more modular and easy to understand while Abstraction makes applications easy to use by hiding underlying complex working.
 - Encapsulation provide security to the properties and methods by deciding who can access them while Abstraction provide security to the application by hiding the working part from the user.
-- Encapsulation is about hiding the information while Abstraction is about hiding the implementation. or internal working.
+- Encapsulation is about hiding the information while Abstraction is about hiding the implementation and internal working.
 - Encapsulation is implemented using access modifiers to define the visibility of class members (attributes and methods). Accessor methods (getters) and mutator methods (setters) are used to provide controlled access to attributes while Abstraction is implemented using abstract classes and interfaces. Abstract classes define a common interface and may contain both abstract methods (without implementation) and concrete methods (with implementation). Interfaces define a contract that classes must adhere to by providing implementations for the defined methods.
