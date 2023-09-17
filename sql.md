@@ -768,3 +768,11 @@ https://leetcode.com/problems/restaurant-growth/?envType=study-plan-v2&envId=top
 https://leetcode.com/problems/movie-rating/description/?envType=study-plan-v2&envId=top-sql-50
 
 https://leetcode.com/problems/human-traffic-of-stadium/solutions/4049359/no-complex-window-functions-only-logic/
+
+https://leetcode.com/problems/trips-and-users/description/
+
+https://leetcode.com/problems/market-analysis-i/description/
+
+https://leetcode.com/problems/capital-gainloss/description/
+
+https://leetcode.com/problems/tree-node/description/
