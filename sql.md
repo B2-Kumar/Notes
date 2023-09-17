@@ -724,7 +724,7 @@ Over (
 
 ##### CTE 
 It stands for common table expression.
-
+Example : 
 ```sql
 WITH
   cte1 AS (SELECT a, b FROM table1),
