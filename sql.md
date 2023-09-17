@@ -147,12 +147,14 @@ FROM table_name
 WHERE condition;
 ```
 ###### AVG() Syntax
+- It ignores the null values thus it becomes equal to sum(column_name) / count(column_name);
 ```sql
 SELECT AVG(column_name)
 FROM table_name
 WHERE condition;
 ```
 ###### SUM() Syntax
+It ignores the null values or say consider it as zero.
 ```sql
 SELECT SUM(column_name)
 FROM table_name
@@ -720,6 +722,17 @@ Over (
 )
 ```
 
+##### CTE 
+It stands for common table expression.
+
+```sql
+WITH
+  cte1 AS (SELECT a, b FROM table1),
+  cte2 AS (SELECT c, d FROM table2)
+SELECT b, d FROM cte1 JOIN cte2
+WHERE cte1.a = cte2.c;
+```
+
 ##### IMPORTANT PROBLEMS : 
 
 https://leetcode.com/problems/students-and-examinations/?envType=study-plan-v2&envId=top-sql-50
@@ -734,3 +747,24 @@ https://leetcode.com/problems/queries-quality-and-percentage/?envType=study-plan
 
 https://leetcode.com/problems/game-play-analysis-iv/?envType=study-plan-v2&envId=top-sql-50
 
+https://leetcode.com/problems/exchange-seats/description/?envType=study-plan-v2&envId=top-sql-50
+
+https://leetcode.com/problems/last-person-to-fit-in-the-bus/description/?envType=study-plan-v2&envId=top-sql-50
+
+https://leetcode.com/problems/consecutive-numbers/description/?envType=study-plan-v2&envId=top-sql-50
+
+https://leetcode.com/problems/count-salary-categories/description/?envType=study-plan-v2&envId=top-sql-50
+
+https://leetcode.com/problems/product-price-at-a-given-date/?envType=study-plan-v2&envId=top-sql-50
+
+https://leetcode.com/problems/department-top-three-salaries/description/?envType=study-plan-v2&envId=top-sql-50
+
+https://leetcode.com/problems/investments-in-2016/description/?envType=study-plan-v2&envId=top-sql-50
+
+https://leetcode.com/problems/friend-requests-ii-who-has-the-most-friends/description/?envType=study-plan-v2&envId=top-sql-50
+
+https://leetcode.com/problems/restaurant-growth/?envType=study-plan-v2&envId=top-sql-50
+
+https://leetcode.com/problems/movie-rating/description/?envType=study-plan-v2&envId=top-sql-50
+
+https://leetcode.com/problems/human-traffic-of-stadium/solutions/4049359/no-complex-window-functions-only-logic/
