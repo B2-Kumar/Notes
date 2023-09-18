@@ -395,6 +395,7 @@ CREATE TABLE new_table_name AS
 ```
 ###### TRUNCATE TABLE
 - Delete the data inside a table, but not the table itself.
+- It is different from delete function as in case of delete each row is deleted one by one while in case of truncate it creates a new table with schema only and then deletes the previous table completely.
 ```sql
 TRUNCATE TABLE table_name;
 ```
@@ -623,6 +624,18 @@ Frame Definition
 Sets the frame size.
 ```sql
 RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+```
+
+```sql
+RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+```
+
+```sql
+RANGE BETWEEN INTERVAL '1' DAY PRECEDING AND CURRENT ROW
+```
+
+```sql
+RANGE BETWEEN 1 PRECEDING AND CURRENT ROW
 ```
 
 ROW_NUMBER() Function
