@@ -42,7 +42,7 @@ ex - commit, rollback, savepoint.
 acid properties in dbms:
 atomicity - all changes in data must be performed successfully or not at all.Atomicity involves the following two operations:
 - Abort: If a transaction aborts then all the changes made are not visible.
-- Commit: If a transaction commits then all the changes made are visible.
+- Consistency: If a transaction commits then all the changes made are visible.
 consistent - data must be consistent before and after the transaction.
 - isolation - no other process can change the data while trasaction is going on. each transaction is occurring independently of the others.
 - durable - data doesn't get lost in case of system failure or restart and is present in the same state as it was before the system failure or restart.

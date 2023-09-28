@@ -2,6 +2,14 @@ Introduce Your Project :
 
 I have created a resposive and food delivery app where i have used react for the frontend development , node and express for the backend development and mongoDB as a database. I have used react in the frontend as it is a single page application, declarative and uses virtual dom for rendering and updating the page thus making the appliction faster. I have used node js in the backend as it uses javascript which is same as used by react in the frontend. It can also handle asynchronous function efficiently with the help of event loop. Along with node i have used express as a framework as it simplifies the process of building apis and implementing middleware funtions. I have used mongoDB as a database because it is open source, No-Sql and stores data in JSON format.
 
+Introduce your project :
+
+My favorite project is Lunch-Box which is a food delivery app.
+This is a mern project where i have used React for the frontend , Node and Express for the backend and mongoDB as a database.
+It has resposive design and user-friendly interface which provides users smooth experience.
+Users can register and login to browse and search food items, add it to the cart and place order. Users can also see the history of the placed orders.
+It supports local businesses and provides secure payment method with the help of stripe payment gateway.
+
 Basic structure and workflow of the project:
 
 - User Registration:
@@ -370,6 +378,7 @@ Promise-Based: Axios returns promises, which makes it easier to handle asynchron
 Global Error Handling: Axios provides a central place to handle errors by using interceptors.
 JSON Handling: Axios automatically parses JSON responses and converts them into JavaScript objects.
 Cancellation: Axios supports request cancellation, allowing you to cancel a request before it completes.
+
 ```jsx
 const axios = require('axios');
 
