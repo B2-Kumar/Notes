@@ -1,17 +1,19 @@
-dbms?
-a set of applications or programs that enables users to create and maintain database. it provides tool or interface for performing various operations such as inserting, updating, deleting, etc into a database.
+DBMS : 
+a set of applications or programs that provides tool or interface to create and maintain database.
+e.g - MySql, MongoDB, etc.
 
-rdbms?
-relational database management system. store data in form o f tables thus making it easier to access and store data efficiently.
-ex - mysql, oracle db...
+RDBMS : 
+Relational database management system. store data in form of tables thus making it easier to access and store data efficiently.
+ex - MySql, Oracle db, etc.
 
 Differences between DBMS and RDBMS.
+https://www.geeksforgeeks.org/difference-between-rdbms-and-dbms/
 
-data?
-collection of information.
+Data - Raw Information, unorganised facts.
+Information - Organised facts and data.
 
-database?
-The database is a collection of inter-related or organised data which is used to retrieve, insert and delete the data efficiently.
+Database : 
+The database is a collection of inter-related or organised data which is used to retrieve, insert and delete the data efficiently. CRUD operations.
 
 example of cloud database - AWS, Oracle database cloud services, Microsoft SQL server
 benefits: Lower costs, Automated, Increase Accessibility
@@ -23,11 +25,11 @@ easily maintained
 reduce development and maintainance time.
 
 Types of DBMS architecture??
-1-tier Architecture
-2-tier Architecture
-3-tier Architecture
+1-tier Architecture - All the components of dbms like client, database and server reside on the same system.
+2-tier Architecturen - Server and database reside on the same machine while client reside on a different machine. Applications on client communicate with server with the help of apis like ODBC, JDBC, etc. It has two different layers so it is easy to maintain. Multiple users can use the database at the same time.
+3-tier Architecture - It contains another layer between the client and server. So, the client can't directly communicate with the server.The application on the client end interacts with an application server which further communicates with the database system. It enhances security, data integrity, and scalability.
 
-schema - structural representation of the database.It defines the arrangement of the data in the database and provides the blue print for how data is stored accessed and related to each other.
+schema - structural representation of the database.It defines the arrangement of the data in the database and provides the blueprint for how data is stored, accessed and related to each other.
 
 different languages in dbms?
 ddl - data definition language.define the database.
@@ -46,6 +48,8 @@ atomicity - all changes in data must be performed successfully or not at all.Ato
 consistent - data must be consistent before and after the transaction.
 - isolation - no other process can change the data while trasaction is going on. each transaction is occurring independently of the others.
 - durable - data doesn't get lost in case of system failure or restart and is present in the same state as it was before the system failure or restart.
+
+Data models are used to describe how the data is stored, accessed, and updated in a DBMS. e.g - ER model, Hierarchical model.
 
 ER (Entity Relationship) diagram in DBMS:
 Entity - any object, class, person or place.
@@ -70,21 +74,24 @@ many-to-many.
 
 Representation of an ER Diagram.
 
-Cardinality: It means how the entities are arranged to each other or what is the relationship structure between entities in a relationship set.
+Cardinality : It means how the entities are arranged to each other or what is the relationship structure between entities in a relationship set.
 
 Keys : It is used to uniquely identify any record from the table and establish and identify relationship between tables.
 
-Primary Key: It is the key which can uniquely each instance of the entity uniquely.
+Primary Key: It is the key which can identify each instance of the entity uniquely.
 
-Candidate key:
-A candidate key is an attribute or set of attributes that can uniquely identify a tuple.
+Candidate key : 
+The minimal set of attributes that can uniquely identify a tuple is known as a candidate key.
 It is primary key + alternate keys. All keys in the candidate keys that are not primary key are alternate keys.
 
-Super Key:
-Super key is an attribute set that can uniquely identify a tuple. A super key is a superset of a candidate key.
+Super Key : 
+A super key is a set of all the keys (with single or multiple attributes) which can uniquely identify the records of the table.
 
-Foreign key:
+Foreign key : 
 Foreign keys are the column of the table used to point to the primary key of another table.
+
+Unique Key : 
+Unique Keys are the keys that define the record uniquely in the table. It is different from Primary Keys, as Unique Key can contain one NULL value but Primary Key does not contain any NULL values.
 
 Composite Key:
 A composite key is a key that consists of two or more columns working together to uniquely identify records.While a primary key can be a composite key (using multiple columns), not all composite keys are primary keys.It can be a primary key or part of a candidate key.
@@ -98,8 +105,6 @@ Specialization is used to identify the subset of an entity set that shares some 
 Normally, the superclass is defined first, the subclass and its related attributes are defined next, and relationship set are then added.
 
 Aggregation: In aggregation, the relation between two entities is treated as a single entity. In aggregation, relationship with its corresponding entities is aggregated into a higher level entity.
-
-
 
 Relational Model:
 Domain: It contains a set of atomic values that an attribute can take.
@@ -129,20 +134,14 @@ Example: We can use the rename operator to rename STUDENT relation to STUDENT1.
 ρ(STUDENT1, STUDENT)  
 
 Join Operations:
-A Join operation combines related tuples from different relations, if and only if a given join condition is satisfied. It is denoted by ⋈.
-1. Natural Join: A natural join is a type of join operation that automatically matches columns with the same name in the participating tables and combines rows where those columns have equal values.
-It does not require explicit specification of the columns to be joined on; it relies solely on column names.
-The result of a natural join includes only one instance of each column with the same name, eliminating duplicate columns.
-If the column names are not consistent or have different meanings across the tables, the natural join can lead to unexpected or incorrect results.
-Natural joins are not as commonly used in practice due to the potential risks associated with relying solely on column names for joining.
+A Join operation combine two or more relations, if and only if a given join condition is satisfied. It is denoted by ⋈.
+1. Natural Join: A natural join is a type of join operation that automatically matches columns with the same name in the participating tables and combines rows where those columns have equal values. It does not require explicit specification of the columns to be joined on. It relies solely on column names.
+The result of a natural join includes only one instance of each column with the same name, eliminating duplicate columns. If the column names are not consistent or have different meanings across the tables, the natural join can lead to unexpected or incorrect results. Natural joins are not as commonly used in practice due to the potential risks associated with relying solely on column names for joining.
 2. Outer Join
-    1. Left Outer Join (⟕)
-    2. Right Outer Join (⟖)
-    3. Full Outer Join (⟗)
-3. Equi/Inner Join: An inner join is a more explicit type of join operation that requires specifying the join condition using the ON keyword.
-It allows you to define exactly which columns are used for the join and how they should be matched.
-Inner join produces a result set that contains only the rows from the participating tables where the specified join condition is met.
-Inner join is widely used and recommended because it provides more control over the join process, making it less error-prone and more predictable compared to the natural join
+    1. Left Outer Join (⟕) - This join returns all the rows of the table on the left side of the join and matches rows for the table on the right side of the join. For the rows for which there is no matching row on the right side, the result-set will contain null.
+    2. Right Outer Join (⟖) - This join returns all the rows of the table on the right side of the join and matching rows for the table on the left side of the join. For the rows for which there is no matching row on the left side, the result-set will contain null.
+    3. Full Outer Join (⟗) - FULL JOIN creates the result-set by combining results of both LEFT JOIN and RIGHT JOIN. The result-set will contain all the rows from both tables. For the rows for which there is no matching, the result-set will contain NULL values.
+3. Equi/Inner Join: It selects all rows from both the tables as long as the condition is satisfied and produces the result-set by combining all rows from both the tables where the condition satisfies.
 
 Integrity Constraints:
 Relational Calculus:
@@ -150,18 +149,17 @@ Relational Calculus:
 Functional Dependency - A relationship that exists between two attributes.
 X -> Y
 The left side (X) of FD is known as a determinant, the right side of the production is known as a dependent.It means that Y is funtionally dependent on X.
-    1. Trivial Functional Dependency
-- A -> B has a trivial dependency if B is a subset of A.
-- A -> A, B -> B etc are trivial.
-    2. Non-Trivial Functional Dependency
-    - A -> B is non-trivial dependency if B is not a subset of A.
+>   Trivial Functional Dependency
+    A -> B has a trivial dependency if B is a subset of A.
+    A -> A, B -> B etc are trivial. e.g - { Employee_Id, Name } → { Name }
 
->   Non-Trivial Dependency:
-    Suppose you find that the attribute Employee_ID determines the attribute Employee_Name. This means that for each unique Employee_ID, there is only one corresponding Employee_Name. This is a non-trivial dependency because it provides new information about how Employee_ID and Employee_Name are related. It's not obvious or trivial that the employee ID would determine the employee's name.
+>   Non-Trivial Functional Dependency
+    A -> B is non-trivial dependency if B is not a subset of A.
+    e.g - { Employee_Id, Name } → { Age }
 
-> Complete Non-Trivial Dependency:
-    Now, let's say you observe that the combination of Employee_ID and Department_ID determines the attribute Employee_Name. In this case, you can't break down the dependency into smaller parts while retaining the same meaning. Both Employee_ID and Department_ID are needed together to determine Employee_Name. If you tried to remove either Employee_ID or Department_ID from the left-hand side of the dependency, you would lose the ability to determine Employee_Name uniquely. This is a complete non-trivial dependency.
-
+>   Multivalued Functional Dependency:
+    Attributes in the dependent set are not dependent on each other.
+    For example, X → { Y, Z }, if there exists is no functional dependency between Y and Z, then it is called as Multivalued functional dependency.
 
 Inference Rule(IR): logical deduction or transformation that allows you to draw new conclusions based on existing rules
 1. Reflexive Rule:
@@ -178,23 +176,19 @@ X -> YZ then X -> Y and X -> Z
 6. Pseudo Transitive Rule:
 X -> Y and YZ -> W then XZ -> W
 
+Decomposition : It is the process of breaking an original relation into multiple sub relations. It helps to remove anomalies, redundancy, and other problems in a DBMS.
+1. Lossy Decomposition : No information is lost while decomposing from the original relation. If we join back the sub decomposed relations, the original is obtained.
+2. Lossless Decomposition : Some information is lost while decomposing from the original relation. One or more of these conditions would fail and we will not be able to recover complete information as present in the original relation.
 
-> Normalisation: process of decomposing the relations into relations with fewer attributes.
-- Elimination of Data Redundancy: Redundant data occurs when the same piece of information is stored in multiple places in the database. This redundancy wastes storage space and can lead to inconsistencies if the same data is updated in one place but not in others. Normalization helps in breaking down the data into smaller, related tables, each representing a single subject, which reduces redundancy.
+> Normalisation: process of decomposing the relations into relations with fewer attributes. It is done to organise the data and attributes of the databases.
 
-- Data Consistency: When data is stored redundantly, inconsistencies can arise when updates are made in one place but not propagated to all instances of that data. Normalization minimizes these inconsistencies by ensuring that each piece of data is stored in only one place, reducing the chance of conflicts.
+- Elimination of Data Redundancy: Redundant data occurs when the same piece of information is stored in multiple places in the database. This redundancy wastes storage space and can lead to inconsistencies if the same data is updated in one place but not in others. Normalization helps in breaking down the data into smaller, related tables, each representing a single subject, which reduces redundancy. Thus data consistency is maintened with the help of normalisation.
 
-- Anomaly Prevention: Anomalies are inconsistencies or irregularities that can occur when data is not properly organized. These include insertion, update, and deletion anomalies. Normalization helps prevent anomalies by structuring data in a way that each piece of information is stored in its appropriate place without duplication.
-
-- Improved Data Integrity: Data integrity refers to the accuracy and reliability of the data stored in the database. By eliminating redundancy and anomalies, normalization contributes to better data integrity. Ensuring that data accurately represents the real-world entities it represents is essential for making informed business decisions.
-
-- Simplified Updates: In a normalized database, when updates need to be made, they typically affect only one place where the data is stored. This simplifies the update process and reduces the chances of errors that could occur when updating redundant data.
-
-- Efficient Querying: Normalization can help improve the efficiency of querying and data retrieval. Smaller, well-structured tables are easier for the DBMS to manage and optimize for query execution. This can lead to faster query performance and improved response times.
-
-- Scalability and Flexibility: A normalized database schema provides a solid foundation for scalability. As the database grows and new requirements emerge, it's easier to accommodate changes and additions to the data structure without causing major disruptions.
-
-- Maintainability: A normalized database is generally easier to maintain and modify. Changes to the schema are more straightforward, and developers can work with a clear understanding of the relationships between different data elements.
+- Prevention of Anomalies : Anomalies are the inconsistencies or Irregularities that can occur in a database when the data is not properly organized or structured. 
+It is of three types:
+1. Insertion Anomaly: This occurs when we are not able to insert data into a database because some attributes may be missing at the time of insertion.
+2. Deletion Anomaly: The delete anomaly refers to the situation where the deletion of data results in the unintended loss of some other important data.
+3. Updatation Anomaly: The update anomaly is when an update of a single data value requires multiple rows of data to be updated.
 
 > Disadvantages of Normalization
 - You cannot start building the database before knowing what the user needs.
@@ -202,30 +196,16 @@ X -> Y and YZ -> W then XZ -> W
 - It is very time-consuming and difficult to normalize relations of a higher degree.
 - Careless decomposition may lead to a bad database design, leading to serious problems.
 
-
-> Anomalies : inconsistencies or irregularities that can occur in a database when the data is not properly organized or structured. 
-It is of three types:
-- Insertion Anomaly: Insertion Anomaly refers to when one cannot insert a new tuple into a relationship due to lack of data.
-- Deletion Anomaly: The delete anomaly refers to the situation where the deletion of data results in the unintended loss of some other important data.
-- Updatation Anomaly: The update anomaly is when an update of a single data value requires multiple rows of data to be updated.
-
 > Normalization works through a series of stages called Normal forms. The normal forms apply to individual relations. The relation is said to be in particular normal form if it satisfies constraints.
 
 > First Normal Form (1NF)
-- A relation will be 1NF if it contains an atomic value.
-- It states that an attribute of a table cannot hold multiple values. It must hold only single-valued attribute.
-- It disallows the multi-valued attribute, composite attribute, and their combinations.
+- A relation will be 1NF if it contains an atomic value. It states that an attribute of a table cannot hold multiple values. It must hold only single-valued attribute.
 
 
 
 
 
 
-
-Lossless and Lossy Decomposition:
-
-Multivalued Dependency
-Multivalued dependency occurs when two attributes in a table are independent of each other but, both depend on a third attribute.
 
 > Transaction
 - It is a set of logically related operation. It contains a group of tasks.

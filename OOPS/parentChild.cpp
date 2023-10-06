@@ -1,16 +1,23 @@
 #include <iostream>
+using namespace std;
 
 class Parent {
 public:
     virtual void display() {
         std::cout << "Parent class" << std::endl;
     }
+
+    // virtual void func() = 0;
 };
 
 class Child : public Parent {
 public:
     void display() {
         std::cout << "Child class" << std::endl;
+    }
+
+    void func(){
+        cout<<"abstact hat gaya";
     }
 };
 
@@ -23,6 +30,9 @@ int main() {
     p.display();
 
     delete parent; // Don't forget to deallocate the memory
+
+    // Child ch;
+    // ch.func();
 
     return 0;
 }

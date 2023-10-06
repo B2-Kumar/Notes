@@ -1,36 +1,32 @@
-#include <iostream>
-
-class Animal {
+#include<iostream>
+using namespace std;
+class Person {
 public:
-    virtual void speak() {
-        std::cout << "Animal speaks." << std::endl;
-    }
+	Person(int x) { cout << "Person::Person(int ) called" << endl; }
+	Person()	 { cout << "Person::Person() called" << endl; }
 };
 
-class Cat : public Animal {
+class Faculty : public Person {
 public:
-    void speak() override {
-        std::cout << "Cat speaks." << std::endl;
-    }
+	Faculty(int x):Person(x) {
+	cout<<"Faculty::Faculty(int ) called"<< endl;
+	}
 };
 
-class Dog : public Animal {
+class Student : virtual public Person {
 public:
-    void speak() override {
-        std::cout << "Dog speaks." << std::endl;
-    }
+	Student(int x):Person(x) {
+		cout<<"Student::Student(int ) called"<< endl;
+	}
 };
 
-class CatDog : public Cat, public Dog {
+class TA : public Faculty, public Student {
 public:
-    void speak() override {
-        Cat::speak(); // Call the speak() function from Cat
-        // or Dog::speak(); // Call the speak() function from Dog
-    }
+	TA(int x):Student(x), Faculty(x), Person(x) {
+		cout<<"TA::TA(int ) called"<< endl;
+	}
 };
 
 int main() {
-    CatDog cd;
-    cd.speak(); // Output: Cat speaks.
-    return 0;
+	TA ta1(30);
 }
