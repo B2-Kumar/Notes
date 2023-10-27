@@ -2,6 +2,9 @@ dom - DOM stands for Document Object Model. It is a programming interface provid
 
 virtual dom - It doesn't directly update html. Instead of directly manipulating the real dom, it acts lightweight copy of the real dom which keeps the track of all the changes made. it compares with the real dom and it updates the jsx which is changed or updated making it fast.It efficiently determines the minimal number of changes required to update the real DOM to match the new UI representation.
 
+How virtual DOM is lightweight?
+A virtual DOM object is the same as a real DOM object, except that it is a lightweight copy. This means that it cannot manipulate on-screen elements. Moreover, upon any change of a property, it only updates the corresponding nodes and not the entire tree.
+
 real dom - it is the actual representation of the html document in the browser.updating the whole real dom every time makes the application slow so in react js concept of virtual dom is used.
 
 react - open source javascript library used for building user interfaces and single page applications.
@@ -103,6 +106,7 @@ function MainContent() {
   return <div className={`content-${theme}`}>Main Content</div>;
 }
 ```
+
 why?
 benefits of context api over redux.
 

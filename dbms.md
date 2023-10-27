@@ -201,7 +201,9 @@ It is of three types:
 > First Normal Form (1NF)
 - A relation will be 1NF if it contains an atomic value. It states that an attribute of a table cannot hold multiple values. It must hold only single-valued attribute.
 
-
+> Second Normal Form (2NF)
+- The table must be in first normal form.
+- It must not contain any partial dependency, i.e., all non-prime attributes are fully functionally dependent on the primary key.
 
 
 

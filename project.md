@@ -40,7 +40,7 @@ Authenticated user clicks on "My Orders" to view their order history.
 Backend searches for the user's email in the orders database.
 If the email is found, the user's order history is retrieved and sent to the frontend for display.
 
-why have you done this projects? what is the motivation behind behind this?
+why have you done this projects? what is the motivation behind this?
 
 The motivation behind this project is the growing demand of convenient and efficient ways to order food and by using the modern web technologies and user friendly design i aimed at creating an app that simplifies the process of ordering food, enhancing user experience and supporting local business. I have also done this to project to learn full stack web development as developing a complex project like this can serve as an excellent learning experience. It provides an opportunity to deepen one's understanding of front-end and back-end development, databases, API integration, and more. It also allows me showcase my skills. Building such application also involves solving various technical challenges, such as implementing authentication, handling payments, and managing data. For developers, these challenges can be both intellectually stimulating and rewarding to overcome.
 
